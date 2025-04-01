@@ -1,38 +1,13 @@
-import type { Schema, Attribute } from '@strapi/strapi';
+import type { Attribute, Schema } from '@strapi/strapi';
 
 export interface ProgramsProgram extends Schema.Component {
   collectionName: 'components_programs_programs';
   info: {
+    description: '';
     displayName: 'program';
     icon: 'apps';
-    description: '';
   };
   attributes: {
-    startDate: Attribute.Date;
-    endDate: Attribute.Date;
-    startTime: Attribute.Time;
-    endTime: Attribute.Time;
-    location_EN: Attribute.Text;
-    location_HK: Attribute.Text;
-    register_EN: Attribute.Text;
-    register_HK: Attribute.Text;
-    period_EN: Attribute.Text;
-    period_HK: Attribute.Text;
-    liveURL: Attribute.String;
-    videoURL: Attribute.String;
-    displayTime_EN: Attribute.String;
-    displayTime_HK: Attribute.String;
-    target_EN: Attribute.Text;
-    target_HK: Attribute.Text;
-    quota_EN: Attribute.Text;
-    quota_HK: Attribute.Text;
-    name_EN: Attribute.Text;
-    name_HK: Attribute.String;
-    district: Attribute.Relation<
-      'programs.program',
-      'oneToOne',
-      'api::district.district'
-    >;
     categories: Attribute.JSON &
       Attribute.CustomField<
         'plugin::multi-select.multi-select',
@@ -52,42 +27,67 @@ export interface ProgramsProgram extends Schema.Component {
           'HKRW_kick-off_ceremony_and_Carnival'
         ]
       >;
+    displayTime_EN: Attribute.String;
+    displayTime_HK: Attribute.String;
+    district: Attribute.Relation<
+      'programs.program',
+      'oneToOne',
+      'api::district.district'
+    >;
+    endDate: Attribute.Date;
+    endTime: Attribute.Time;
+    liveURL: Attribute.String;
+    location_EN: Attribute.Text;
+    location_HK: Attribute.Text;
+    name_EN: Attribute.Text;
+    name_HK: Attribute.String;
+    period_EN: Attribute.Text;
+    period_HK: Attribute.Text;
+    quota_EN: Attribute.Text;
+    quota_HK: Attribute.Text;
+    register_EN: Attribute.Text;
+    register_HK: Attribute.Text;
+    startDate: Attribute.Date;
+    startTime: Attribute.Time;
+    target_EN: Attribute.Text;
+    target_HK: Attribute.Text;
+    videoURL: Attribute.String;
   };
 }
 
 export interface UiMenuItem extends Schema.Component {
   collectionName: 'components_ui_menu_items';
   info: {
+    description: '';
     displayName: 'menu_item';
     icon: 'bulletList';
-    description: '';
   };
   attributes: {
-    label_EN: Attribute.String;
-    url: Attribute.String & Attribute.DefaultTo<'#'>;
     blank: Attribute.Boolean & Attribute.DefaultTo<false>;
-    show: Attribute.Boolean & Attribute.DefaultTo<true>;
+    label_EN: Attribute.String;
     label_HK: Attribute.String;
+    show: Attribute.Boolean & Attribute.DefaultTo<true>;
     subMenu: Attribute.Component<'ui.sub-menu', true>;
+    url: Attribute.String & Attribute.DefaultTo<'#'>;
   };
 }
 
 export interface UiSlide extends Schema.Component {
   collectionName: 'components_ui_slides';
   info: {
+    description: '';
     displayName: 'Slide';
     icon: 'apps';
-    description: '';
   };
   attributes: {
-    url_EN: Attribute.String;
-    image: Attribute.Media;
+    image: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    thumbnail: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
     title: Attribute.String;
     title_EN: Attribute.Text;
     title_HK: Attribute.String;
+    url_EN: Attribute.String;
     url_HK: Attribute.String;
     url_ZH: Attribute.String;
-    thumbnail: Attribute.Media;
   };
 }
 
@@ -98,9 +98,9 @@ export interface UiSubMenu extends Schema.Component {
     icon: 'bulletList';
   };
   attributes: {
+    blank: Attribute.Boolean;
     label_EN: Attribute.String;
     label_HK: Attribute.String;
-    blank: Attribute.Boolean;
     show: Attribute.Boolean;
     url: Attribute.String;
   };
