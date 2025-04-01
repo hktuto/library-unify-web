@@ -12,34 +12,34 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "Name_HK": {
+    "title_HK": {
       "type": "text"
     },
-    "Name_EN": {
+    "title_EN": {
       "type": "string"
     },
-    "Description_HK": {
+    "content_HK": {
       "type": "text"
     },
-    "Description_EN": {
+    "content_EN": {
       "type": "text"
     },
-    "Location_HK": {
+    "location_HK": {
       "type": "text"
     },
-    "Location_EN": {
+    "location_EN": {
       "type": "string"
     },
-    "Address_HK": {
+    "address_HK": {
       "type": "text"
     },
-    "Address_EN": {
+    "address_EN": {
       "type": "text"
     },
-    "Host_HK": {
+    "host_HK": {
       "type": "text"
     },
-    "Host_EN": {
+    "host_EN": {
       "type": "text"
     },
     "district": {
@@ -47,13 +47,13 @@
       "relation": "oneToOne",
       "target": "api::district.district"
     },
-    "DisplayTime_HK": {
+    "displayTime_HK": {
       "type": "string"
     },
-    "DisplayTime_EN": {
+    "displayTime_EN": {
       "type": "string"
     },
-    "Category": {
+    "categories": {
       "type": "enumeration",
       "enum": [
         "Library",
@@ -63,24 +63,25 @@
         "Leisure and Cultural Venue"
       ]
     },
-    "StartDate": {
+    "startDate": {
       "type": "date"
     },
-    "EndDate": {
+    "endDate": {
       "type": "date"
     },
-    "StartTime": {
+    "startTime": {
       "type": "time"
     },
-    "EndTime": {
+    "endTime": {
       "type": "time"
     },
     "images": {
+      "type": "media",
+      "multiple": true,
+      "required": false,
       "allowedTypes": [
         "images"
-      ],
-      "type": "media",
-      "multiple": true
+      ]
     }
   }
 }

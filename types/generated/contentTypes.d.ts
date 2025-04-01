@@ -541,11 +541,13 @@ export interface ApiHalfAnHourHalfAnHour extends Schema.CollectionType {
     draftAndPublish: true;
   };
   attributes: {
-    Address_EN: Attribute.Text;
-    Address_HK: Attribute.Text;
-    Category: Attribute.Enumeration<
+    address_EN: Attribute.Text;
+    address_HK: Attribute.Text;
+    categories: Attribute.Enumeration<
       ['Library', 'Council', 'School', 'Other', 'Leisure and Cultural Venue']
     >;
+    content_EN: Attribute.Text;
+    content_HK: Attribute.Text;
     createdAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
       'api::half-an-hour.half-an-hour',
@@ -553,27 +555,25 @@ export interface ApiHalfAnHourHalfAnHour extends Schema.CollectionType {
       'admin::user'
     > &
       Attribute.Private;
-    Description_EN: Attribute.Text;
-    Description_HK: Attribute.Text;
-    DisplayTime_EN: Attribute.String;
-    DisplayTime_HK: Attribute.String;
+    displayTime_EN: Attribute.String;
+    displayTime_HK: Attribute.String;
     district: Attribute.Relation<
       'api::half-an-hour.half-an-hour',
       'oneToOne',
       'api::district.district'
     >;
-    EndDate: Attribute.Date;
-    EndTime: Attribute.Time;
-    Host_EN: Attribute.Text;
-    Host_HK: Attribute.Text;
+    endDate: Attribute.Date;
+    endTime: Attribute.Time;
+    host_EN: Attribute.Text;
+    host_HK: Attribute.Text;
     images: Attribute.Media<'images', true>;
-    Location_EN: Attribute.String;
-    Location_HK: Attribute.Text;
-    Name_EN: Attribute.String;
-    Name_HK: Attribute.Text;
+    location_EN: Attribute.String;
+    location_HK: Attribute.Text;
     publishedAt: Attribute.DateTime;
-    StartDate: Attribute.Date;
-    StartTime: Attribute.Time;
+    startDate: Attribute.Date;
+    startTime: Attribute.Time;
+    title_EN: Attribute.String;
+    title_HK: Attribute.Text;
     updatedAt: Attribute.DateTime;
     updatedBy: Attribute.Relation<
       'api::half-an-hour.half-an-hour',
