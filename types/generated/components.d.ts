@@ -68,6 +68,7 @@ export interface UiMenuItem extends Schema.Component {
     image: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
     label_EN: Attribute.String;
     label_HK: Attribute.String;
+    readMoreThreshold: Attribute.Integer;
     show: Attribute.Boolean & Attribute.DefaultTo<true>;
     subMenu: Attribute.Component<'ui.sub-menu', true>;
     url: Attribute.String & Attribute.DefaultTo<'#'>;
