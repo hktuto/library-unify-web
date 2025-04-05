@@ -599,6 +599,7 @@ export interface ApiHomeHome extends Schema.SingleType {
     createdAt: Attribute.DateTime;
     createdBy: Attribute.Relation<'api::home.home', 'oneToOne', 'admin::user'> &
       Attribute.Private;
+    menu: Attribute.Component<'ui.menu-item', true>;
     publishedAt: Attribute.DateTime;
     seo_title: Attribute.String;
     Slider: Attribute.Component<'ui.slide', true>;

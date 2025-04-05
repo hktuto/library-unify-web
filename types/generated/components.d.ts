@@ -64,6 +64,8 @@ export interface UiMenuItem extends Schema.Component {
   };
   attributes: {
     blank: Attribute.Boolean & Attribute.DefaultTo<false>;
+    color: Attribute.String;
+    image: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
     label_EN: Attribute.String;
     label_HK: Attribute.String;
     show: Attribute.Boolean & Attribute.DefaultTo<true>;
@@ -94,11 +96,13 @@ export interface UiSlide extends Schema.Component {
 export interface UiSubMenu extends Schema.Component {
   collectionName: 'components_ui_sub_menus';
   info: {
+    description: '';
     displayName: 'subMenu';
     icon: 'bulletList';
   };
   attributes: {
     blank: Attribute.Boolean;
+    image: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
     label_EN: Attribute.String;
     label_HK: Attribute.String;
     show: Attribute.Boolean;

@@ -30,6 +30,20 @@
       "type": "component",
       "repeatable": true,
       "component": "ui.sub-menu"
+    },
+    "image": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "color": {
+      "type": "string"
     }
   }
 }

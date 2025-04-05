@@ -21,6 +21,11 @@
       "repeatable": true,
       "pluginOptions": {},
       "component": "ui.slide"
+    },
+    "menu": {
+      "type": "component",
+      "repeatable": true,
+      "component": "ui.menu-item"
     }
   }
 }
