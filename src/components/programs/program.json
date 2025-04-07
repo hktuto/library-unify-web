@@ -90,6 +90,12 @@
         "HKRW_kick-off_ceremony_and_Carnival"
       ],
       "customField": "plugin::multi-select.multi-select"
+    },
+    "contact_HK": {
+      "type": "string"
+    },
+    "contact_EN": {
+      "type": "string"
     }
   }
 }

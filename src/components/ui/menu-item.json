@@ -44,9 +44,6 @@
     },
     "color": {
       "type": "string"
-    },
-    "readMoreThreshold": {
-      "type": "integer"
     }
   }
 }

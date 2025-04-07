@@ -27,6 +27,8 @@ export interface ProgramsProgram extends Schema.Component {
           'HKRW_kick-off_ceremony_and_Carnival'
         ]
       >;
+    contact_EN: Attribute.String;
+    contact_HK: Attribute.String;
     displayTime_EN: Attribute.String;
     displayTime_HK: Attribute.String;
     district: Attribute.Relation<
