@@ -35,6 +35,15 @@
     },
     "showInReadMore": {
       "type": "boolean"
+    },
+    "url_HK": {
+      "type": "string"
+    },
+    "url_CN": {
+      "type": "string"
+    },
+    "url_EN": {
+      "type": "string"
     }
   }
 }

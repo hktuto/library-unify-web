@@ -44,6 +44,15 @@
     },
     "color": {
       "type": "string"
+    },
+    "url_HK": {
+      "type": "string"
+    },
+    "url_CN": {
+      "type": "string"
+    },
+    "url_EN": {
+      "type": "string"
     }
   }
 }

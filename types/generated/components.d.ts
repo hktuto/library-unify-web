@@ -73,6 +73,9 @@ export interface UiMenuItem extends Schema.Component {
     show: Attribute.Boolean & Attribute.DefaultTo<true>;
     subMenu: Attribute.Component<'ui.sub-menu', true>;
     url: Attribute.String & Attribute.DefaultTo<'#'>;
+    url_CN: Attribute.String;
+    url_EN: Attribute.String;
+    url_HK: Attribute.String;
   };
 }
 
@@ -110,6 +113,9 @@ export interface UiSubMenu extends Schema.Component {
     show: Attribute.Boolean;
     showInReadMore: Attribute.Boolean;
     url: Attribute.String;
+    url_CN: Attribute.String;
+    url_EN: Attribute.String;
+    url_HK: Attribute.String;
   };
 }
 
