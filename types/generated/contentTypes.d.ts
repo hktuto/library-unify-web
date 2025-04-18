@@ -544,7 +544,7 @@ export interface ApiHalfAnHourHalfAnHour extends Schema.CollectionType {
     address_EN: Attribute.Text;
     address_HK: Attribute.Text;
     categories: Attribute.Enumeration<
-      ['Library', 'Council', 'School', 'Other', 'Leisure and Cultural Venue']
+      ['Library', 'DC', 'LCSD Venue', 'Com Lib', 'Other']
     >;
     content_EN: Attribute.Text;
     content_HK: Attribute.Text;

@@ -57,10 +57,10 @@
       "type": "enumeration",
       "enum": [
         "Library",
-        "Council",
-        "School",
-        "Other",
-        "Leisure and Cultural Venue"
+        "DC",
+        "LCSD Venue",
+        "Com Lib",
+        "Other"
       ]
     },
     "startDate": {
