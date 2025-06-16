@@ -96,6 +96,18 @@
     },
     "contact_EN": {
       "type": "string"
+    },
+    "location_2_HK": {
+      "type": "string"
+    },
+    "location_2_EN": {
+      "type": "string"
+    },
+    "phone_HK": {
+      "type": "string"
+    },
+    "phone_EN": {
+      "type": "string"
     }
   }
 }

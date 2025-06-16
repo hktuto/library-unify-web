@@ -39,12 +39,16 @@ export interface ProgramsProgram extends Schema.Component {
     endDate: Attribute.Date;
     endTime: Attribute.Time;
     liveURL: Attribute.String;
+    location_2_EN: Attribute.String;
+    location_2_HK: Attribute.String;
     location_EN: Attribute.Text;
     location_HK: Attribute.Text;
     name_EN: Attribute.Text;
     name_HK: Attribute.String;
     period_EN: Attribute.Text;
     period_HK: Attribute.Text;
+    phone_EN: Attribute.String;
+    phone_HK: Attribute.String;
     quota_EN: Attribute.Text;
     quota_HK: Attribute.Text;
     register_EN: Attribute.Text;
