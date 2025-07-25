@@ -663,6 +663,7 @@ export interface ApiPagePage extends Schema.CollectionType {
 export interface ApiPopupPopup extends Schema.SingleType {
   collectionName: 'popups';
   info: {
+    description: '';
     displayName: 'popup';
     pluralName: 'popups';
     singularName: 'popup';
@@ -671,6 +672,7 @@ export interface ApiPopupPopup extends Schema.SingleType {
     draftAndPublish: true;
   };
   attributes: {
+    allowURL: Attribute.String;
     content_EN: Attribute.RichText;
     content_HK: Attribute.RichText;
     createdAt: Attribute.DateTime;

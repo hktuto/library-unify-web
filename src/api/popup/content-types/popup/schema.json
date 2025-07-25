@@ -4,7 +4,8 @@
   "info": {
     "singularName": "popup",
     "pluralName": "popups",
-    "displayName": "popup"
+    "displayName": "popup",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -22,6 +23,9 @@
     },
     "content_EN": {
       "type": "richtext"
+    },
+    "allowURL": {
+      "type": "string"
     }
   }
 }
