@@ -53,6 +53,7 @@ export interface ProgramsProgram extends Schema.Component {
     quota_HK: Attribute.Text;
     register_EN: Attribute.Text;
     register_HK: Attribute.Text;
+    special_class: Attribute.String;
     startDate: Attribute.Date;
     startTime: Attribute.Time;
     target_EN: Attribute.Text;

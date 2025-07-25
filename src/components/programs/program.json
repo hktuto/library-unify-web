@@ -108,6 +108,9 @@
     },
     "phone_EN": {
       "type": "string"
+    },
+    "special_class": {
+      "type": "string"
     }
   }
 }
