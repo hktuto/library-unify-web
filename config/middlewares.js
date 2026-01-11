@@ -23,7 +23,7 @@ module.exports = [
   {
     name: 'strapi::cors',
     config: {
-      origin: 'hkrw.readingpromotion.gov.hk',
+      origin: 'https://hkrw.readingpromotion.gov.hk',
       credentials: false,
     },
   },
