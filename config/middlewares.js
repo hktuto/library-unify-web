@@ -20,13 +20,14 @@ module.exports = [
       },
     },
   },
-  {name:'strapi::cors',
+  {
+    name: 'strapi::cors',
     config: {
-      origin: [ 'hkrw.readingpromotion.gov.hk'],
-      methods: ['GET', 'POST', 'PUT', 'HEAD', 'OPTIONS'],
+      origin: ['hkrw.readingpromotion.gov.hk', 'example.com'],
+      methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'HEAD', 'OPTIONS'],
       headers: ['Content-Type', 'Authorization', 'Origin', 'Accept'],
       keepHeaderOnError: true,
-    }
+    },
   },
   'strapi::poweredBy',
   'strapi::query',
