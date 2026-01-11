@@ -24,6 +24,7 @@ module.exports = [
     name: 'strapi::cors',
     config: {
       origin: 'hkrw.readingpromotion.gov.hk',
+      credentials: false,
     },
   },
   'strapi::poweredBy',
