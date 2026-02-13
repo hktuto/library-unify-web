@@ -19,11 +19,7 @@ module.exports = [
   {
     name: "strapi::cors",
     config: {
-      origin: [
-        "https://hkrw.readingpromotion.gov.hk",
-        "https://slf.readingpromotion.gov.hk",
-        "http://localhost:3000",
-      ],
+      origin: ["http://localhost:3000", "http://47.242.219.240:3000"],
       credentials: false,
     },
   },
