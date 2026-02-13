@@ -22,3 +22,6 @@ DS_Store
 # Local IDE configurations
 vscode/
 idea/
+
+.nuxt
+.output
