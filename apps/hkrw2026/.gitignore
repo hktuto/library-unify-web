@@ -1,0 +1,24 @@
+# Nuxt build and runtime outputs
+nuxt
+output
+dist
+cache
+nitro
+
+# Node dependencies
+node_modules
+
+# Logs
+logs
+*.log
+
+# Environment files
+env
+env.*
+
+# Miscellaneous
+DS_Store
+
+# Local IDE configurations
+vscode/
+idea/

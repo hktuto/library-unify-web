@@ -1,6 +1,21 @@
 module.exports = {
   apps: [
     {
+      name: "library-2025-backend",
+      script: "pnpm",
+      args: "start:backend",
+      env: {
+        NODE_ENV: "development",
+        HOST: "0.0.0.0",
+        PORT: 1337,
+        APP_KEYS: "toBeModified1,toBeModified2",
+        API_TOKEN_SALT: "tobemodified",
+        ADMIN_JWT_SECRET: "tobemodified",
+        TRANSFER_TOKEN_SALT: "tobemodified",
+        JWT_SECRET: "tobemodified",
+      },
+    },
+    {
       name: "library-2025-frontend",
       script: "./apps/hkrw2026/.output/server/index.mjs",
       cwd: __dirname,
