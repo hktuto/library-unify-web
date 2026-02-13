@@ -1,6 +1,6 @@
-import type { Attribute, Schema } from '@strapi/strapi';
+import type { Schema, Struct } from '@strapi/strapi';
 
-export interface ProgramsProgram extends Schema.Component {
+export interface ProgramsProgram extends Struct.ComponentSchema {
   collectionName: 'components_programs_programs';
   info: {
     description: '';
@@ -8,8 +8,8 @@ export interface ProgramsProgram extends Schema.Component {
     icon: 'apps';
   };
   attributes: {
-    categories: Attribute.JSON &
-      Attribute.CustomField<
+    categories: Schema.Attribute.JSON &
+      Schema.Attribute.CustomField<
         'plugin::multi-select.multi-select',
         [
           'World_Book_Day_Creative_Competition',
@@ -24,45 +24,41 @@ export interface ProgramsProgram extends Schema.Component {
           'Story Sharing Sessions',
           'Online_Reading_Club',
           'HKRW_Fun_Day',
-          'HKRW_kick-off_ceremony_and_Carnival'
+          'HKRW_kick-off_ceremony_and_Carnival',
         ]
       >;
-    contact_EN: Attribute.String;
-    contact_HK: Attribute.String;
-    displayTime_EN: Attribute.String;
-    displayTime_HK: Attribute.String;
-    district: Attribute.Relation<
-      'programs.program',
-      'oneToOne',
-      'api::district.district'
-    >;
-    endDate: Attribute.Date;
-    endTime: Attribute.Time;
-    liveURL: Attribute.String;
-    location_2_EN: Attribute.String;
-    location_2_HK: Attribute.String;
-    location_EN: Attribute.Text;
-    location_HK: Attribute.Text;
-    name_EN: Attribute.Text;
-    name_HK: Attribute.String;
-    period_EN: Attribute.Text;
-    period_HK: Attribute.Text;
-    phone_EN: Attribute.String;
-    phone_HK: Attribute.String;
-    quota_EN: Attribute.Text;
-    quota_HK: Attribute.Text;
-    register_EN: Attribute.Text;
-    register_HK: Attribute.Text;
-    special_class: Attribute.String;
-    startDate: Attribute.Date;
-    startTime: Attribute.Time;
-    target_EN: Attribute.Text;
-    target_HK: Attribute.Text;
-    videoURL: Attribute.String;
+    contact_EN: Schema.Attribute.String;
+    contact_HK: Schema.Attribute.String;
+    displayTime_EN: Schema.Attribute.String;
+    displayTime_HK: Schema.Attribute.String;
+    district: Schema.Attribute.Relation<'oneToOne', 'api::district.district'>;
+    endDate: Schema.Attribute.Date;
+    endTime: Schema.Attribute.Time;
+    liveURL: Schema.Attribute.String;
+    location_2_EN: Schema.Attribute.String;
+    location_2_HK: Schema.Attribute.String;
+    location_EN: Schema.Attribute.Text;
+    location_HK: Schema.Attribute.Text;
+    name_EN: Schema.Attribute.Text;
+    name_HK: Schema.Attribute.String;
+    period_EN: Schema.Attribute.Text;
+    period_HK: Schema.Attribute.Text;
+    phone_EN: Schema.Attribute.String;
+    phone_HK: Schema.Attribute.String;
+    quota_EN: Schema.Attribute.Text;
+    quota_HK: Schema.Attribute.Text;
+    register_EN: Schema.Attribute.Text;
+    register_HK: Schema.Attribute.Text;
+    special_class: Schema.Attribute.String;
+    startDate: Schema.Attribute.Date;
+    startTime: Schema.Attribute.Time;
+    target_EN: Schema.Attribute.Text;
+    target_HK: Schema.Attribute.Text;
+    videoURL: Schema.Attribute.String;
   };
 }
 
-export interface UiMenuItem extends Schema.Component {
+export interface UiMenuItem extends Struct.ComponentSchema {
   collectionName: 'components_ui_menu_items';
   info: {
     description: '';
@@ -70,21 +66,21 @@ export interface UiMenuItem extends Schema.Component {
     icon: 'bulletList';
   };
   attributes: {
-    blank: Attribute.Boolean & Attribute.DefaultTo<false>;
-    color: Attribute.String;
-    image: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
-    label_EN: Attribute.String;
-    label_HK: Attribute.String;
-    show: Attribute.Boolean & Attribute.DefaultTo<true>;
-    subMenu: Attribute.Component<'ui.sub-menu', true>;
-    url: Attribute.String & Attribute.DefaultTo<'#'>;
-    url_CN: Attribute.String;
-    url_EN: Attribute.String;
-    url_HK: Attribute.String;
+    blank: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>;
+    color: Schema.Attribute.String;
+    image: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    label_EN: Schema.Attribute.String;
+    label_HK: Schema.Attribute.String;
+    show: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<true>;
+    subMenu: Schema.Attribute.Component<'ui.sub-menu', true>;
+    url: Schema.Attribute.String & Schema.Attribute.DefaultTo<'#'>;
+    url_CN: Schema.Attribute.String;
+    url_EN: Schema.Attribute.String;
+    url_HK: Schema.Attribute.String;
   };
 }
 
-export interface UiSlide extends Schema.Component {
+export interface UiSlide extends Struct.ComponentSchema {
   collectionName: 'components_ui_slides';
   info: {
     description: '';
@@ -92,18 +88,18 @@ export interface UiSlide extends Schema.Component {
     icon: 'apps';
   };
   attributes: {
-    image: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
-    thumbnail: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
-    title: Attribute.String;
-    title_EN: Attribute.Text;
-    title_HK: Attribute.String;
-    url_EN: Attribute.String;
-    url_HK: Attribute.String;
-    url_ZH: Attribute.String;
+    image: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    thumbnail: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    title: Schema.Attribute.String;
+    title_EN: Schema.Attribute.Text;
+    title_HK: Schema.Attribute.String;
+    url_EN: Schema.Attribute.String;
+    url_HK: Schema.Attribute.String;
+    url_ZH: Schema.Attribute.String;
   };
 }
 
-export interface UiSubMenu extends Schema.Component {
+export interface UiSubMenu extends Struct.ComponentSchema {
   collectionName: 'components_ui_sub_menus';
   info: {
     description: '';
@@ -111,22 +107,22 @@ export interface UiSubMenu extends Schema.Component {
     icon: 'bulletList';
   };
   attributes: {
-    blank: Attribute.Boolean;
-    image: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
-    label_EN: Attribute.String;
-    label_HK: Attribute.String;
-    show: Attribute.Boolean;
-    showInReadMore: Attribute.Boolean;
-    url: Attribute.String;
-    url_CN: Attribute.String;
-    url_EN: Attribute.String;
-    url_HK: Attribute.String;
+    blank: Schema.Attribute.Boolean;
+    image: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    label_EN: Schema.Attribute.String;
+    label_HK: Schema.Attribute.String;
+    show: Schema.Attribute.Boolean;
+    showInReadMore: Schema.Attribute.Boolean;
+    url: Schema.Attribute.String;
+    url_CN: Schema.Attribute.String;
+    url_EN: Schema.Attribute.String;
+    url_HK: Schema.Attribute.String;
   };
 }
 
-declare module '@strapi/types' {
-  export module Shared {
-    export interface Components {
+declare module '@strapi/strapi' {
+  export module Public {
+    export interface ComponentSchemas {
       'programs.program': ProgramsProgram;
       'ui.menu-item': UiMenuItem;
       'ui.slide': UiSlide;
