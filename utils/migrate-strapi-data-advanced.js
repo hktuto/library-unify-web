@@ -192,9 +192,11 @@ function buildPopulateQuery(contentTypeName) {
   // Using Strapi v4 populate syntax
   const populateStrategies = {
     // Home has Slider (component with image/thumbnail) and menu (component with image/subMenu)
-    home: "populate[Slider][populate]=*&populate[menu][populate]=*",
+    // Need to deeply populate subMenu images
+    home: "populate[Slider][populate][image]=true&populate[Slider][populate][thumbnail]=true&populate[menu][populate][image]=true&populate[menu][populate][subMenu][populate][image]=true",
     // Menu has logo (media) and item (component with image/subMenu)
-    menu: "populate[logo]=true&populate[item][populate]=*",
+    // Need to deeply populate subMenu images
+    menu: "populate[logo]=true&populate[item][populate][image]=true&populate[item][populate][subMenu][populate][image]=true",
     // Event has photos (media), slides (component with image/thumbnail), programs (component with district)
     event:
       "populate[photos]=true&populate[slides][populate]=*&populate[programs][populate][district]=true&populate[categories]=true",
@@ -278,7 +280,7 @@ async function processMediaInData(data) {
         // Multiple media
         const mediaIds = [];
         for (const mediaItem of value.data) {
-          if (mediaItem && mediaItem.data.mime) {
+          if (mediaItem && mediaItem.attributes && mediaItem.attributes.mime) {
             const uploadedId = await processMediaItem(mediaItem);
             if (uploadedId) mediaIds.push(uploadedId);
           }
@@ -286,7 +288,7 @@ async function processMediaInData(data) {
         if (mediaIds.length > 0) {
           processed[key] = mediaIds;
         }
-      } else if (value.data && value.data.mime) {
+      } else if (value.data && value.data.attributes && value.data.attributes.mime) {
         // Single media
         const uploadedId = await processMediaItem(value.data);
         if (uploadedId) {
@@ -462,6 +464,7 @@ function getComponentName(contentType, fieldName) {
     event: { slides: "ui.slide", programs: "programs.program" },
     home: { Slider: "ui.slide", menu: "ui.menu-item" },
     menu: { item: "ui.menu-item" },
+    "ui.menu-item": { subMenu: "ui.sub-menu" },
   };
   return mapping[contentType]?.[fieldName];
 }

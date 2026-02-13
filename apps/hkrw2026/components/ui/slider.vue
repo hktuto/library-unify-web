@@ -47,15 +47,13 @@ function slideClickHandler(item: any) {
         :key="slide.id"
         :class="{ slide: true, cursor: slide.url }"
         @click="slideClickHandler(slide)"
-        :data-swiper-autoplay="
-          slide.image?.data?.url.includes('mp4') ? 20000 : 3000
-        "
+        :data-swiper-autoplay="slide.image?.url.includes('mp4') ? 20000 : 3000"
       >
-        <template v-if="slide.image?.data?.url.includes('mp4')">
+        <template v-if="slide.image?.url.includes('mp4')">
           <div class="videoContainer">
             <video
               class="video"
-              :src="imgUrlConverter(slide.image?.data?.url)"
+              :src="imgUrlConverter(slide.image?.url)"
               autoplay
               preload
               muted
@@ -65,9 +63,9 @@ function slideClickHandler(item: any) {
           </div>
         </template>
         <template v-else>
-          <img :src="imgUrlConverter(slide.image?.data?.url)" alt="" />
+          <img :src="imgUrlConverter(slide.image?.url)" alt="" />
           <div class="absoluteBg">
-            <img :src="imgUrlConverter(slide.image?.data?.url)" alt="" />
+            <img :src="imgUrlConverter(slide.image?.url)" alt="" />
           </div>
         </template>
       </swiper-slide>
