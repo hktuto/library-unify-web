@@ -1,5 +1,5 @@
-/// <reference types="@hypernym/nuxt-anime" />
 /// <reference types="@nuxtjs/strapi" />
+/// <reference types="@hypernym/nuxt-anime" />
 /// <reference types="@element-plus/nuxt" />
 /// <reference types="@nuxt/devtools" />
 /// <reference types="@nuxt/telemetry" />

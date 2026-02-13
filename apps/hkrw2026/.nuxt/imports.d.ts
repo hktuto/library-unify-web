@@ -53,4 +53,3 @@ export { useStrapiUrl } from '../../../node_modules/.pnpm/@nuxtjs+strapi@2.1.1_m
 export { useStrapiUser } from '../../../node_modules/.pnpm/@nuxtjs+strapi@2.1.1_magicast@0.5.2/node_modules/@nuxtjs/strapi/dist/runtime/composables/useStrapiUser';
 export { useStrapiVersion } from '../../../node_modules/.pnpm/@nuxtjs+strapi@2.1.1_magicast@0.5.2/node_modules/@nuxtjs/strapi/dist/runtime/composables/useStrapiVersion';
 export { useStrapi } from '../../../node_modules/.pnpm/@nuxtjs+strapi@2.1.1_magicast@0.5.2/node_modules/@nuxtjs/strapi/dist/runtime/composables-v5/useStrapi';
-export { useNuxtDevTools } from '../../../node_modules/.pnpm/@nuxt+devtools@3.2.1_vite@7.3.1_@types+node@25.2.3_jiti@2.6.1_sass@1.97.3_terser@5.46.0_0deeef7ba012d62ab91609c121e4ec94/node_modules/@nuxt/devtools/dist/runtime/use-nuxt-devtools';

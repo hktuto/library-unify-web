@@ -8,19 +8,13 @@
     "start": "strapi start",
     "build": "strapi build",
     "strapi": "strapi",
-    "backend:start": "pm2 start ecosystem.config.js",
-    "backend:stop": "pm2 stop ecosystem.config.js",
-    "backend:restart": "pm2 restart ecosystem.config.js",
-    "backend:reload": "pm2 reload ecosystem.config.js",
-    "backend:delete": "pm2 delete ecosystem.config.js",
-    "backend:logs": "pm2 logs library-2025-backend",
-    "backend:monit": "pm2 monit",
-    "backend:status": "pm2 status"
+    "pm2:start": "pm2 start ecosystem.config.js"
   },
   "dependencies": {
     "@strapi/plugin-cloud": "5.36.0",
     "@strapi/plugin-color-picker": "5.36.0",
     "@strapi/plugin-users-permissions": "5.36.0",
+    "@strapi/provider-upload-local": "^5.36.0",
     "@strapi/strapi": "5.36.0",
     "better-sqlite3": "11.3.0",
     "pg": "^8.11.5",

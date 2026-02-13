@@ -9,29 +9,22 @@ type NuxtAppInjections =
   InjectionType<typeof import("../../../../node_modules/.pnpm/nuxt@3.21.1_@parcel+watcher@2.5.6_@types+node@25.2.3_@vue+compiler-sfc@3.5.28_better-sq_ded3d05b48757ea31190c45712a1bf71/node_modules/nuxt/dist/app/plugins/revive-payload.client.js")> &
   InjectionType<typeof import("../../../../node_modules/.pnpm/nuxt@3.21.1_@parcel+watcher@2.5.6_@types+node@25.2.3_@vue+compiler-sfc@3.5.28_better-sq_ded3d05b48757ea31190c45712a1bf71/node_modules/nuxt/dist/head/runtime/plugins/unhead.js")> &
   InjectionType<typeof import("../../../../node_modules/.pnpm/nuxt@3.21.1_@parcel+watcher@2.5.6_@types+node@25.2.3_@vue+compiler-sfc@3.5.28_better-sq_ded3d05b48757ea31190c45712a1bf71/node_modules/nuxt/dist/pages/runtime/plugins/router.js")> &
-  InjectionType<typeof import("../../../../node_modules/.pnpm/nuxt@3.21.1_@parcel+watcher@2.5.6_@types+node@25.2.3_@vue+compiler-sfc@3.5.28_better-sq_ded3d05b48757ea31190c45712a1bf71/node_modules/nuxt/dist/app/plugins/browser-devtools-timing.client.js")> &
   InjectionType<typeof import("../../../../node_modules/.pnpm/nuxt@3.21.1_@parcel+watcher@2.5.6_@types+node@25.2.3_@vue+compiler-sfc@3.5.28_better-sq_ded3d05b48757ea31190c45712a1bf71/node_modules/nuxt/dist/app/plugins/payload.client.js")> &
-  InjectionType<typeof import("../../../../node_modules/.pnpm/nuxt@3.21.1_@parcel+watcher@2.5.6_@types+node@25.2.3_@vue+compiler-sfc@3.5.28_better-sq_ded3d05b48757ea31190c45712a1bf71/node_modules/nuxt/dist/app/plugins/dev-server-logs.js")> &
   InjectionType<typeof import("../../../../node_modules/.pnpm/nuxt@3.21.1_@parcel+watcher@2.5.6_@types+node@25.2.3_@vue+compiler-sfc@3.5.28_better-sq_ded3d05b48757ea31190c45712a1bf71/node_modules/nuxt/dist/app/plugins/navigation-repaint.client.js")> &
   InjectionType<typeof import("../../../../node_modules/.pnpm/nuxt@3.21.1_@parcel+watcher@2.5.6_@types+node@25.2.3_@vue+compiler-sfc@3.5.28_better-sq_ded3d05b48757ea31190c45712a1bf71/node_modules/nuxt/dist/app/plugins/check-outdated-build.client.js")> &
   InjectionType<typeof import("../../../../node_modules/.pnpm/nuxt@3.21.1_@parcel+watcher@2.5.6_@types+node@25.2.3_@vue+compiler-sfc@3.5.28_better-sq_ded3d05b48757ea31190c45712a1bf71/node_modules/nuxt/dist/app/plugins/revive-payload.server.js")> &
   InjectionType<typeof import("../../../../node_modules/.pnpm/nuxt@3.21.1_@parcel+watcher@2.5.6_@types+node@25.2.3_@vue+compiler-sfc@3.5.28_better-sq_ded3d05b48757ea31190c45712a1bf71/node_modules/nuxt/dist/app/plugins/chunk-reload.client.js")> &
   InjectionType<typeof import("../../../../node_modules/.pnpm/nuxt@3.21.1_@parcel+watcher@2.5.6_@types+node@25.2.3_@vue+compiler-sfc@3.5.28_better-sq_ded3d05b48757ea31190c45712a1bf71/node_modules/nuxt/dist/pages/runtime/plugins/prefetch.client.js")> &
-  InjectionType<typeof import("../../../../node_modules/.pnpm/nuxt@3.21.1_@parcel+watcher@2.5.6_@types+node@25.2.3_@vue+compiler-sfc@3.5.28_better-sq_ded3d05b48757ea31190c45712a1bf71/node_modules/nuxt/dist/pages/runtime/plugins/check-if-page-unused.js")> &
-  InjectionType<typeof import("../../../../node_modules/.pnpm/@nuxt+devtools@3.2.1_vite@7.3.1_@types+node@25.2.3_jiti@2.6.1_sass@1.97.3_terser@5.46.0_0deeef7ba012d62ab91609c121e4ec94/node_modules/@nuxt/devtools/dist/runtime/plugins/devtools.server.js")> &
-  InjectionType<typeof import("../../../../node_modules/.pnpm/@nuxt+devtools@3.2.1_vite@7.3.1_@types+node@25.2.3_jiti@2.6.1_sass@1.97.3_terser@5.46.0_0deeef7ba012d62ab91609c121e4ec94/node_modules/@nuxt/devtools/dist/runtime/plugins/devtools.client.js")> &
   InjectionType<typeof import("../../../../node_modules/.pnpm/@nuxtjs+strapi@2.1.1_magicast@0.5.2/node_modules/@nuxtjs/strapi/dist/runtime/plugins/dns.server.js")> &
   InjectionType<typeof import("../../../../node_modules/.pnpm/@nuxtjs+strapi@2.1.1_magicast@0.5.2/node_modules/@nuxtjs/strapi/dist/runtime/plugins/strapi.js")> &
   InjectionType<typeof import("../../../../node_modules/.pnpm/@hypernym+nuxt-anime@2.1.1/node_modules/@hypernym/nuxt-anime/dist/runtime/plugin.js")> &
-  InjectionType<typeof import("../../../../node_modules/.pnpm/nuxt@3.21.1_@parcel+watcher@2.5.6_@types+node@25.2.3_@vue+compiler-sfc@3.5.28_better-sq_ded3d05b48757ea31190c45712a1bf71/node_modules/nuxt/dist/app/plugins/warn.dev.server.js")> &
-  InjectionType<typeof import("../../../../node_modules/.pnpm/nuxt@3.21.1_@parcel+watcher@2.5.6_@types+node@25.2.3_@vue+compiler-sfc@3.5.28_better-sq_ded3d05b48757ea31190c45712a1bf71/node_modules/nuxt/dist/app/plugins/check-if-layout-used.js")> &
   InjectionType<typeof import("../../plugins/vercel")>
 
 declare module '#app' {
   interface NuxtApp extends NuxtAppInjections { }
 
   interface NuxtAppLiterals {
-    pluginName: 'vue-devtools-client' | 'nuxt:revive-payload:client' | 'nuxt:head' | 'nuxt:router' | 'nuxt:browser-devtools-timing' | 'nuxt:payload' | 'nuxt:revive-payload:server' | 'nuxt:chunk-reload' | 'nuxt:global-components' | 'nuxt:prefetch' | 'nuxt:checkIfPageUnused' | 'nuxt:checkIfLayoutUsed'
+    pluginName: 'nuxt:revive-payload:client' | 'nuxt:head' | 'nuxt:router' | 'nuxt:payload' | 'nuxt:revive-payload:server' | 'nuxt:chunk-reload' | 'nuxt:global-components' | 'nuxt:prefetch'
   }
 }
 
