@@ -5,7 +5,7 @@ module.exports = {
       script: "pnpm",
       args: "start:backend",
       env: {
-        NODE_ENV: "development",
+        NODE_ENV: "production",
         HOST: "0.0.0.0",
         PORT: 1337,
         APP_KEYS: "toBeModified1,toBeModified2",
@@ -25,6 +25,7 @@ module.exports = {
       env: {
         NODE_ENV: "production",
         PORT: 3000,
+        STRAPI_URL: "http://47.242.219.240/:1337",
       },
       // Log files
       log_file: "./logs/frontend_combined.log",
