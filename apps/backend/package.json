@@ -1,0 +1,41 @@
+{
+  "name": "backend",
+  "private": true,
+  "version": "0.1.0",
+  "description": "A Strapi application",
+  "scripts": {
+    "dev": "strapi develop",
+    "start": "strapi start",
+    "build": "strapi build",
+    "strapi": "strapi",
+    "backend:start": "pm2 start ecosystem.config.js",
+    "backend:stop": "pm2 stop ecosystem.config.js",
+    "backend:restart": "pm2 restart ecosystem.config.js",
+    "backend:reload": "pm2 reload ecosystem.config.js",
+    "backend:delete": "pm2 delete ecosystem.config.js",
+    "backend:logs": "pm2 logs library-2025-backend",
+    "backend:monit": "pm2 monit",
+    "backend:status": "pm2 status"
+  },
+  "dependencies": {
+    "@strapi/plugin-cloud": "5.36.0",
+    "@strapi/plugin-color-picker": "5.36.0",
+    "@strapi/plugin-users-permissions": "5.36.0",
+    "@strapi/strapi": "5.36.0",
+    "better-sqlite3": "11.3.0",
+    "pg": "^8.11.5",
+    "react": "^18.0.0",
+    "react-dom": "^18.0.0",
+    "react-router-dom": "^6.0.0",
+    "strapi-plugin-multi-select": "^2.1.0",
+    "styled-components": "^6.0.0"
+  },
+  "author": {
+    "name": "A Strapi developer"
+  },
+  "strapi": {
+    "uuid": "87ad2dec-f283-46b6-831d-9b9f1ff5b531"
+  },
+  "engines": {},
+  "license": "MIT"
+}

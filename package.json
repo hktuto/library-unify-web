@@ -1,33 +1,30 @@
 {
-  "name": "digital-ocean-admin",
+  "name": "library-2025",
   "private": true,
-  "version": "0.1.0",
-  "description": "A Strapi application",
+  "version": "1.0.0",
+  "description": "Library 2026 - Monorepo with Strapi backend",
   "scripts": {
-    "dev": "strapi develop",
-    "start": "strapi start",
-    "build": "strapi build",
-    "strapi": "strapi"
-  },
-  "dependencies": {
-    "@strapi/plugin-cloud": "5.36.0",
-    "@strapi/plugin-color-picker": "5.36.0",
-    "@strapi/plugin-users-permissions": "5.36.0",
-    "@strapi/strapi": "5.36.0",
-    "better-sqlite3": "11.3.0",
-    "pg": "^8.11.5",
-    "react": "^18.0.0",
-    "react-dom": "^18.0.0",
-    "react-router-dom": "^6.0.0",
-    "strapi-plugin-multi-select": "^2.1.0",
-    "styled-components": "^6.0.0"
+    "dev:backend": "pnpm --filter backend dev",
+    "build:backend": "pnpm --filter backend build",
+    "start:backend": "pnpm --filter backend start",
+    "dev:frontend": "pnpm --filter frontend dev",
+    "dev": "pnpm dev:backend",
+    "backend:start": "pnpm --filter backend backend:start",
+    "backend:stop": "pnpm --filter backend backend:stop",
+    "backend:restart": "pnpm --filter backend backend:restart",
+    "backend:reload": "pnpm --filter backend backend:reload",
+    "backend:delete": "pnpm --filter backend backend:delete",
+    "backend:logs": "pnpm --filter backend backend:logs",
+    "backend:status": "pnpm --filter backend backend:status",
+    "migrate": "node utils/migrate-strapi-data.js",
+    "migrate:advanced": "node utils/migrate-strapi-data-advanced.js",
+    "migrate:dry-run": "DRY_RUN=true node utils/migrate-strapi-data-advanced.js"
   },
   "author": {
     "name": "A Strapi developer"
   },
-  "strapi": {
-    "uuid": "87ad2dec-f283-46b6-831d-9b9f1ff5b531"
-  },
-  "engines": {},
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "pm2": "^6.0.14"
+  }
 }

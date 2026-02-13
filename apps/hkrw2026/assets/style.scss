@@ -1,0 +1,9 @@
+.innerGrid{
+  width:100%;
+  max-width: var(--body-width);
+  margin: 0 auto;
+  @media (max-width: 1304px) {
+    padding-inline: 70px;
+  }
+}
+

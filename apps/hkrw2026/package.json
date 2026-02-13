@@ -1,0 +1,44 @@
+{
+  "name": "frontend",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "nuxt build",
+    "dev": "nuxt dev",
+    "generate": "nuxt generate",
+    "preview": "nuxt preview",
+    "postinstall": "nuxt prepare"
+  },
+  "dependencies": {
+    "@element-plus/nuxt": "^1.0.8",
+    "@nuxtjs/robots": "^3.0.0",
+    "@nuxtjs/strapi": "^2.1.1",
+    "@preact/signals": "^2.0.2",
+    "@schedule-x/calendar": "^2.26.0",
+    "@schedule-x/calendar-controls": "^2.28.0",
+    "@schedule-x/event-modal": "^2.26.0",
+    "@schedule-x/events-service": "^2.27.2",
+    "@schedule-x/theme-default": "^2.26.0",
+    "@schedule-x/vue": "^2.24.0",
+    "@vercel/analytics": "^1.5.0",
+    "@vueuse/core": "^10.9.0",
+    "add-to-calendar-button": "^2.6.9",
+    "dayjs": "^1.11.10",
+    "element-plus": "^2.6.2",
+    "nuxt": "^3.11.1",
+    "nuxt-gtag": "^2.0.5",
+    "nuxt-simple-sitemap": "^4.4.1",
+    "preact": "^10.26.4",
+    "qs": "^6.14.2",
+    "sass": "^1.72.0",
+    "stringify": "^5.2.0",
+    "swiper": "^11.0.7",
+    "usemodal-vue3": "^0.3.7",
+    "vue": "^3.4.21",
+    "vue-router": "^4.3.0",
+    "vue3-markdown-it": "^1.0.10"
+  },
+  "devDependencies": {
+    "@hypernym/nuxt-anime": "^2.1.1"
+  }
+}
