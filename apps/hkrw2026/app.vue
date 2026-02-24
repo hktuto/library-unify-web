@@ -24,9 +24,11 @@ const { find } = useStrapi();
 const content = ref();
 const { tObj } = useLang({});
 async function getPopup() {
-  const item = await find("popup");
+  const item = await find("popup", {
+    status: route.query.status || "published",
+  });
 
-  if (item) {
+  if (item && item.data.title_HK) {
     content.value = item.data;
     const storage = localStorage.getItem("popup-date");
     if (!storage || storage !== item.data.updatedAt) {

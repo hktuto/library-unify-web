@@ -3,6 +3,7 @@ const { find } = useStrapi();
 const {
   public: { STRAPI_URL },
 } = useRuntimeConfig();
+const route = useRoute();
 const { currentLang } = useLang({});
 const displayMenu = computed(() => {
   if (data.value.data.item) {
@@ -35,6 +36,7 @@ const { data } = useAsyncData("menu", () =>
         populate: "*",
       },
     },
+    status: route.query.status || "published",
   }),
 );
 </script>

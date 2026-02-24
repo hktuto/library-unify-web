@@ -44,6 +44,18 @@ module.exports = ({ env }) => ({
             `/preview/category?status=${status}&documentId=${documentId}`
           );
         }
+        if (uid === "api::half-an-hour.half-an-hour") {
+          return (
+            env("FRONT_URL") +
+            `/preview/Read_Together_for_Half_an_Hour?status=${status}&documentId=${documentId}`
+          );
+        }
+        if (uid === "api::event.event") {
+          return (
+            env("FRONT_URL") +
+            `/preview/event?status=${status}&documentId=${documentId}`
+          );
+        }
         return null;
       },
     },
