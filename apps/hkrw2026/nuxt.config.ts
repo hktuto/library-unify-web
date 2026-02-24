@@ -28,7 +28,12 @@ export default defineNuxtConfig({
       ],
     },
   },
-  modules: ["@hypernym/nuxt-anime", "@nuxtjs/strapi", "@element-plus/nuxt"],
+  modules: [
+    "@hypernym/nuxt-anime",
+    "@nuxtjs/strapi",
+    "@element-plus/nuxt",
+    "@nuxt/image",
+  ],
 
   runtimeConfig: {
     public: {

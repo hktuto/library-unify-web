@@ -62,9 +62,9 @@ const calendarApp = createCalendar({
   locale: "en-US",
   views: [createViewMonthAgenda()],
   events: [],
-  minDate: "2025-04-01",
-  maxDate: "2025-05-31",
-  selectedDate: dayjs("2025-05-31").format("YYYY-MM-DD"),
+  minDate: "2026-02-01",
+  maxDate: "2026-05-31",
+  selectedDate: dayjs("2026-04-01").format("YYYY-MM-DD"),
   plugins: [eventsServicePlugin, calendarControls],
   callbacks: {
     onRender: ($app) => {
@@ -86,7 +86,6 @@ const calendarApp = createCalendar({
 });
 
 function eventClick(event: any) {
-  console.log(event);
   if (event.url) {
     router.push(event.url);
   }
@@ -97,6 +96,7 @@ function getEvents() {
   const events: any[] = [];
   for (const event of allEvents.value) {
     for (const program of event.programs) {
+      if (!program.startDate || !program.endDate) continue;
       events.push({
         id: event.id + program.id,
         title: tObj("title_", event),
