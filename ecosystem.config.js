@@ -13,6 +13,7 @@ module.exports = {
         ADMIN_JWT_SECRET: "tobemodified",
         TRANSFER_TOKEN_SALT: "tobemodified",
         JWT_SECRET: "tobemodified",
+        FRONT_URL: "http://47.242.219.240:3000",
       },
     },
     {
