@@ -10,7 +10,11 @@
  * - Relations between content types
  * - Components (including nested components)
  *
- * Usage: node utils/migrate-strapi-data-advanced.js
+ * Usage: node utils/migrate-strapi-data-advanced.js [options]
+ *
+ * Options:
+ *   --clean-only    Only clean content from new Strapi, don't import
+ *   --no-clean      Skip cleaning before migration (override CLEAN_BEFORE_MIGRATE env)
  *
  * Environment variables:
  * - OLD_STRAPI_URL: URL of the old Strapi instance
@@ -19,6 +23,11 @@
  * - NEW_API_TOKEN: API token for the new Strapi
  * - SKIP_MEDIA: Set to 'true' to skip media migration
  * - DRY_RUN: Set to 'true' to simulate without making changes
+ * - CLEAN_BEFORE_MIGRATE: Set to 'true' to remove all content before import (default: false)
+ * - IMPORT_ONLY: Comma-separated list of content types to import (e.g., 'district,category,event')
+ *                  Available: district, category, page, event, half-an-hour, footer, home, menu, popup
+ * - EXCLUDE: Comma-separated list of content types to exclude (e.g., 'half-an-hour,event')
+ *            Useful when you want to import all except specific types
  */
 
 const fs = require("fs");
@@ -34,7 +43,9 @@ const OLD_API_TOKEN = process.env.OLD_API_TOKEN;
 const NEW_API_TOKEN = process.env.NEW_API_TOKEN;
 const SKIP_MEDIA = process.env.SKIP_MEDIA === "true";
 const DRY_RUN = process.env.DRY_RUN === "true";
-const CLEAN_BEFORE_MIGRATE = process.env.CLEAN_BEFORE_MIGRATE !== "false"; // Default to true
+const CLEAN_BEFORE_MIGRATE = process.env.CLEAN_BEFORE_MIGRATE === "true"; // Default to false
+const IMPORT_ONLY = process.env.IMPORT_ONLY ? process.env.IMPORT_ONLY.split(",").map(s => s.trim()) : null;
+const EXCLUDE = process.env.EXCLUDE ? process.env.EXCLUDE.split(",").map(s => s.trim()) : null;
 
 // Temp directory for downloaded media
 const TEMP_DIR = path.join(__dirname, ".temp-media");
@@ -68,13 +79,16 @@ const CONTENT_TYPES = [
 ];
 
 // ID mapping for relations (old ID -> { id, documentId })
-const idMapping = {
-  district: {},
-  category: {},
-  page: {},
-  event: {},
-  "half-an-hour": {},
-};
+// Will be initialized based on content types being migrated
+function createIdMapping(contentTypeNames) {
+  const mapping = {};
+  for (const name of contentTypeNames) {
+    if (["district", "category", "page", "event", "half-an-hour"].includes(name)) {
+      mapping[name] = {};
+    }
+  }
+  return mapping;
+}
 
 // Ensure temp directory exists
 if (!fs.existsSync(TEMP_DIR)) {
@@ -367,7 +381,7 @@ async function processMediaItem(mediaItem) {
 }
 
 // Clean data for new Strapi - handles Strapi v4 response format
-function cleanData(item, contentTypeName) {
+function cleanData(item, contentTypeName, idMapping) {
   if (!item || typeof item !== "object") return item;
 
   if (Array.isArray(item)) {
@@ -407,7 +421,7 @@ function cleanData(item, contentTypeName) {
           const relatedIds = value.data
             .map((related) => {
               const targetType = getRelationTargetType(contentTypeName, key);
-              if (targetType && idMapping[targetType] && related.id) {
+              if (targetType && idMapping && idMapping[targetType] && related.id) {
                 const mapped = idMapping[targetType][related.id];
                 return mapped ? { id: mapped.id } : null;
               }
@@ -421,7 +435,7 @@ function cleanData(item, contentTypeName) {
           // Single relation
           const related = value.data;
           const targetType = getRelationTargetType(contentTypeName, key);
-          if (targetType && idMapping[targetType] && related.id) {
+          if (targetType && idMapping && idMapping[targetType] && related.id) {
             const mapped = idMapping[targetType][related.id];
             if (mapped) {
               cleaned[key] = { id: mapped.id };
@@ -442,14 +456,14 @@ function cleanData(item, contentTypeName) {
       // This is likely a component - pass component name for relation mapping
       const componentName = getComponentName(contentTypeName, key);
       cleaned[key] = value.map((comp) =>
-        cleanData(comp, componentName || contentTypeName),
+        cleanData(comp, componentName || contentTypeName, idMapping),
       );
       continue;
     }
 
     // Handle nested objects
     if (value && typeof value === "object") {
-      cleaned[key] = cleanData(value, contentTypeName);
+      cleaned[key] = cleanData(value, contentTypeName, idMapping);
     } else {
       cleaned[key] = value;
     }
@@ -541,16 +555,14 @@ async function checkNewStrapi() {
 }
 
 // Clean all content from new Strapi
-async function cleanNewStrapi() {
+async function cleanNewStrapi(contentTypesToClean = null) {
   if (DRY_RUN) {
-    console.log("[DRY RUN] Would clean all content from new Strapi\n");
+    console.log("[DRY RUN] Would clean content from new Strapi\n");
     return;
   }
 
-  console.log("Cleaning new Strapi content...\n");
-
   // Define cleanup order (dependent types first to avoid constraint errors)
-  const cleanupOrder = [
+  const allCleanupOrder = [
     { name: "event", endpoint: "events" },
     { name: "half-an-hour", endpoint: "half-an-hours" },
     { name: "home", endpoint: "home", isSingleType: true },
@@ -561,6 +573,18 @@ async function cleanNewStrapi() {
     { name: "category", endpoint: "categories" },
     { name: "district", endpoint: "districts" },
   ];
+
+  // Filter cleanup order if specific content types are provided
+  const cleanupOrder = contentTypesToClean 
+    ? allCleanupOrder.filter(ct => contentTypesToClean.includes(ct.name))
+    : allCleanupOrder;
+
+  if (cleanupOrder.length === 0) {
+    return;
+  }
+
+  console.log("Cleaning new Strapi content...");
+  console.log(`Types to clean: ${cleanupOrder.map(ct => ct.name).join(", ")}\n`);
 
   const headers = {
     "Content-Type": "application/json",
@@ -625,7 +649,7 @@ async function cleanNewStrapi() {
 }
 
 // Migrate a single content type
-async function migrateContentType({ name, endpoint, isSingleType, hasMedia }) {
+async function migrateContentType({ name, endpoint, isSingleType, hasMedia }, idMapping) {
   console.log(`\n${"=".repeat(60)}`);
   console.log(
     `Migrating: ${name} (${isSingleType ? "single type" : "collection type"})`,
@@ -656,7 +680,7 @@ async function migrateContentType({ name, endpoint, isSingleType, hasMedia }) {
     console.log(`\n→ ${title}`);
 
     // Clean data (remove IDs, handle relations)
-    let cleanedData = cleanData(attributes, name);
+    let cleanedData = cleanData(attributes, name, idMapping);
 
     // Process media (including media in components)
     if (!SKIP_MEDIA) {
@@ -687,15 +711,65 @@ async function migrateContentType({ name, endpoint, isSingleType, hasMedia }) {
   return { name, success, failed };
 }
 
+// Filter content types based on IMPORT_ONLY and EXCLUDE
+function getContentTypesToMigrate() {
+  let filtered = CONTENT_TYPES;
+  
+  // Handle IMPORT_ONLY (whitelist)
+  if (IMPORT_ONLY) {
+    filtered = filtered.filter(ct => IMPORT_ONLY.includes(ct.name));
+    const notFound = IMPORT_ONLY.filter(name => !CONTENT_TYPES.find(ct => ct.name === name));
+    
+    if (notFound.length > 0) {
+      console.warn(`⚠ Warning: The following content types were not found: ${notFound.join(", ")}`);
+      console.warn(`  Available types: ${CONTENT_TYPES.map(ct => ct.name).join(", ")}\n`);
+    }
+  }
+  
+  // Handle EXCLUDE (blacklist)
+  if (EXCLUDE) {
+    filtered = filtered.filter(ct => !EXCLUDE.includes(ct.name));
+    const notFound = EXCLUDE.filter(name => !CONTENT_TYPES.find(ct => ct.name === name));
+    
+    if (notFound.length > 0) {
+      console.warn(`⚠ Warning: The following excluded content types were not found: ${notFound.join(", ")}`);
+      console.warn(`  Available types: ${CONTENT_TYPES.map(ct => ct.name).join(", ")}\n`);
+    }
+  }
+  
+  return filtered;
+}
+
+// Parse command line arguments
+function parseArgs() {
+  const args = process.argv.slice(2);
+  return {
+    cleanOnly: args.includes("--clean-only"),
+    noClean: args.includes("--no-clean"),
+  };
+}
+
 // Main migration function
 async function runMigration() {
+  const args = parseArgs();
+  
+  // Handle --no-clean flag
+  const shouldClean = args.noClean ? false : CLEAN_BEFORE_MIGRATE;
+  
   console.log("Strapi Data Migration (Advanced)");
   console.log("================================\n");
   console.log(`From: ${OLD_STRAPI_URL}`);
   console.log(`To:   ${NEW_STRAPI_URL}`);
   console.log(`Skip Media: ${SKIP_MEDIA}`);
   console.log(`Dry Run: ${DRY_RUN}`);
-  console.log(`Clean Before Migrate: ${CLEAN_BEFORE_MIGRATE}\n`);
+  console.log(`Clean Before Migrate: ${shouldClean}`);
+  if (IMPORT_ONLY) {
+    console.log(`Import Only: ${IMPORT_ONLY.join(", ")}`);
+  }
+  if (EXCLUDE) {
+    console.log(`Exclude: ${EXCLUDE.join(", ")}`);
+  }
+  console.log();
 
   // Check if new Strapi is running
   const isNewStrapiReady = await checkNewStrapi();
@@ -710,34 +784,56 @@ async function runMigration() {
 
   console.log("✓ New Strapi is accessible\n");
 
-  // Clean new Strapi if enabled
-  if (CLEAN_BEFORE_MIGRATE) {
+  // Get content types to migrate
+  const contentTypesToMigrate = getContentTypesToMigrate();
+
+  // Handle --clean-only mode
+  if (args.cleanOnly) {
+    console.log("Running in CLEAN-ONLY mode (no import)\n");
+    // Clean ALL content types, regardless of EXCLUDE/IMPORT_ONLY settings
+    await cleanNewStrapi();
+    console.log("\n✓ Clean completed.");
+    return;
+  }
+
+  // Clean new Strapi if enabled (clean ALL types, regardless of EXCLUDE)
+  if (shouldClean) {
     await cleanNewStrapi();
   }
+  
+  if (contentTypesToMigrate.length === 0) {
+    console.log("No content types to migrate.");
+    return;
+  }
+
+  console.log(`\nWill migrate: ${contentTypesToMigrate.map(ct => ct.name).join(", ")}\n`);
+
+  // Initialize ID mapping for content types that need it
+  const idMapping = createIdMapping(contentTypesToMigrate.map(ct => ct.name));
 
   // Run migrations in order (independent types first)
   const results = [];
 
   // Phase 1: Independent types (no relations)
   console.log("\n--- Phase 1: Independent Types ---");
-  const independentTypes = CONTENT_TYPES.filter((ct) =>
+  const independentTypes = contentTypesToMigrate.filter((ct) =>
     ["district", "category", "page", "footer", "popup"].includes(ct.name),
   );
 
   for (const contentType of independentTypes) {
-    const result = await migrateContentType(contentType);
+    const result = await migrateContentType(contentType, idMapping);
     results.push(result);
   }
 
   // Phase 2: Types with relations
   console.log("\n--- Phase 2: Types with Relations ---");
-  const dependentTypes = CONTENT_TYPES.filter(
+  const dependentTypes = contentTypesToMigrate.filter(
     (ct) =>
       !["district", "category", "page", "footer", "popup"].includes(ct.name),
   );
 
   for (const contentType of dependentTypes) {
-    const result = await migrateContentType(contentType);
+    const result = await migrateContentType(contentType, idMapping);
     results.push(result);
   }
 
@@ -770,6 +866,8 @@ async function runMigration() {
   if (totalFailed > 0) {
     process.exit(1);
   }
+  
+  process.exit(0);
 }
 
 // Run the migration

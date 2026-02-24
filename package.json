@@ -21,7 +21,11 @@
     "monit": "pm2 monit",
     "migrate": "node utils/migrate-strapi-data.js",
     "migrate:advanced": "node utils/migrate-strapi-data-advanced.js",
-    "migrate:dry-run": "DRY_RUN=true node utils/migrate-strapi-data-advanced.js"
+    "migrate:dry-run": "DRY_RUN=true node utils/migrate-strapi-data-advanced.js",
+    "migrate:clean": "node utils/migrate-strapi-data-advanced.js --clean-only",
+    "migrate:fresh": "CLEAN_BEFORE_MIGRATE=true node utils/migrate-strapi-data-advanced.js",
+    "import:events": "node utils/import-events-from-excel.js",
+    "import:events:dry-run": "DRY_RUN=true node utils/import-events-from-excel.js"
   },
   "author": {
     "name": "A Strapi developer"
@@ -29,5 +33,8 @@
   "license": "MIT",
   "dependencies": {
     "pm2": "^6.0.14"
+  },
+  "devDependencies": {
+    "xlsx": "^0.18.5"
   }
 }
