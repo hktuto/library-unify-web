@@ -54,6 +54,7 @@ onMounted(() => {
   box-sizing: border-box;
 }
 .app {
+  background: #fff;
   &.home {
     filter: grayscale(1);
   }
