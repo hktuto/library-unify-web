@@ -28,7 +28,7 @@ const { data, pending } = await useAsyncData("oneCategory", () =>
 const singleCategory = computed(() => {
   if (!data.value || !data.value.data || data.value.data.length === 0)
     return null;
-
+  console.log("singleCategory", data.value.data[0]);
   return data.value.data[0];
 });
 
@@ -143,7 +143,7 @@ onMounted(() => {
       <div
         v-if="singleCategory"
         class="title gradientText"
-        :style="`--hue:${getHue(singleCategory.color)}`"
+        :style="`--hue:${getHue(singleCategory.color || '#000')}`"
       >
         {{ tObj("name_", singleCategory) }}
       </div>
@@ -157,14 +157,14 @@ onMounted(() => {
             })
           }}
         </div>
-        <UiGrid v-else>
+        <UiGrid v-else-if="singleCategory">
           <UiGridItem
             v-for="event in singleCategory.events"
             :key="event.id"
             :img="event.photos[0].url"
             :title="tObj('title_', event)"
             :url="`/event/${event.documentId}`"
-            :color="singleCategory.color"
+            :color="singleCategory.color || '#000'"
           />
         </UiGrid>
       </template>
