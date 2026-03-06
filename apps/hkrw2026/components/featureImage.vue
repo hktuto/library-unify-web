@@ -1,34 +1,36 @@
 <script setup lang="ts">
-
-const {public:{strapi:{url}}} = useRuntimeConfig();
-
-const displayUrl = computed(() => url.includes('localhost') ? url : "")
+const {
+  public: { STRAPI_URL },
+} = useRuntimeConfig();
 
 const props = defineProps<{
-  img: string,
-  blurImage: string
-}>()
+  img: string;
+  blurImage: string;
+}>();
 </script>
 
 <template>
   <div class="innerGrid noPadding">
-    <div class="featureContainer bgGradient" >
-      <div class="blurImage" :style="`background-image:url(${blurImage})`"></div>
+    <div class="featureContainer bgGradient">
+      <div
+        class="blurImage"
+        :style="`background-image:url(${STRAPI_URL + blurImage})`"
+      ></div>
       <div class="featureImage innerGrid">
-        <img :src="displayUrl + img" alt="">
+        <img :src="STRAPI_URL + img" alt="" />
       </div>
     </div>
   </div>
 </template>
 
 <style scoped lang="scss">
-.featureContainer{
+.featureContainer {
   isolation: isolate;
   position: relative;
-  .blurImage{
+  .blurImage {
     position: absolute;
     left: 0;
-    top:0;
+    top: 0;
     width: 100%;
     height: 100%;
     opacity: 0.5;
@@ -37,7 +39,7 @@ const props = defineProps<{
     image-rendering: auto;
   }
 }
-.featureImage{
+.featureImage {
   width: 100%;
   aspect-ratio: 16/8;
   position: relative;
@@ -47,7 +49,6 @@ const props = defineProps<{
   @media (min-width: 960px) {
     aspect-ratio: initial;
     height: 480px;
-    
   }
   img {
     height: 100%;
