@@ -4,7 +4,7 @@ import dayjs from "dayjs";
 const props = defineProps<{
   event: any;
 }>();
-const { t, tObj } = useLang({
+const { t, tObj, currentLang } = useLang({
   ...props.event,
   tableHost_EN: "Host",
   tableTarget_EN: "Target",
@@ -82,6 +82,32 @@ function makeProgram(item: any) {
     });
 }
 
+function calculateDisplayTime(time: string) {
+  if (!time) return "--";
+  if (currentLang.value === "HK" || currentLang.value === "CN") {
+    const spliter = time.includes("至");
+    if (spliter) {
+      const [start, end] = time.split("至");
+      return `${start.trim()} 至 <br/> ${end.trim()}`;
+    } else {
+      return time.trim();
+    }
+  }
+  return time;
+}
+
+function calculateDisplayLocation(location: string) {
+  if (!location) return "--";
+  if (currentLang.value === "HK" || currentLang.value === "CN") {
+    if (location.includes(" - ")) {
+      const [start, end] = location.split(" - ");
+      return `${start.trim()} - <br/> ${end.trim()}`;
+    }
+    return location.trim();
+  }
+  return location;
+}
+
 onMounted(() => {
   makeProgram(props.event);
 });
@@ -92,6 +118,7 @@ onMounted(() => {
     <div class="content">
       <div class="imageContainer">
         <FeatureImage
+          v-if="event"
           :img="event.photos[0].url"
           :blur-image="event.photos[0].url"
         />
@@ -147,7 +174,7 @@ onMounted(() => {
     </div>
     <div class="tableContainer">
       <table
-        v-if="programs.length > 0"
+        v-if="programs && programs.length > 0"
         class="evantTable"
         :style="`--column-count:${columnCount}`"
       >
@@ -163,8 +190,14 @@ onMounted(() => {
         </thead>
         <tbody>
           <tr v-for="program in programs" :key="program.id">
-            <td v-if="showDate">{{ tObj("displayTime_", program) }}</td>
-            <td v-if="showLocation">{{ tObj("location_", program) }}</td>
+            <td
+              v-if="showDate"
+              v-html="calculateDisplayTime(tObj('displayTime_', program))"
+            ></td>
+            <td
+              v-if="showLocation"
+              v-html="calculateDisplayLocation(tObj('location_', program))"
+            ></td>
             <td v-if="showQuota">
               {{
                 program.quota_EN === "N/A" ? t("na_") : tObj("quota_", program)
