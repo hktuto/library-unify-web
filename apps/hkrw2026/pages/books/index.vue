@@ -31,7 +31,7 @@ const { tObj, currentLang, t } = useLang({
           :key="book.id"
           :img="book.thumbnail.url"
           :title="tObj('title_', book)"
-          :url="tObj('url_', book)"
+          :url="`/books/${book.documentId}`"
         />
       </UiGrid>
     </template>

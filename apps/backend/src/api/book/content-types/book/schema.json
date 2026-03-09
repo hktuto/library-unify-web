@@ -32,6 +32,12 @@
     },
     "link_EN": {
       "type": "string"
+    },
+    "content_HK": {
+      "type": "richtext"
+    },
+    "content_EN": {
+      "type": "richtext"
     }
   }
 }
