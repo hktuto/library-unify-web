@@ -2,7 +2,7 @@
 import Markdown from "vue3-markdown-it";
 const { findOne } = useStrapi();
 const route = useRoute();
-const { data, pending, refresh, error } = await useAsyncData("books", () =>
+const { data, pending, refresh, error } = await useAsyncData("books-detail", () =>
   findOne("books", route.params.id as any, {
     populate: {
       thumbnail: {
@@ -16,8 +16,7 @@ const { t, tObj } = useLang({});
 
 <template>
   <div class="pageContent innerGrid">
-    {{ error }}
-    <!-- {{data.data}} -->
+
     <div v-if="pending" class="pending"></div>
     <template v-else>
       <div>
