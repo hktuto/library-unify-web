@@ -441,11 +441,17 @@ export interface ApiBookBook extends Struct.CollectionTypeSchema {
     draftAndPublish: true;
   };
   attributes: {
+    author_EN: Schema.Attribute.String;
+    author_HK: Schema.Attribute.String;
+    category_EN: Schema.Attribute.String;
+    category_HK: Schema.Attribute.String;
     content_EN: Schema.Attribute.RichText;
     content_HK: Schema.Attribute.RichText;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
+    eLink_EN: Schema.Attribute.String;
+    eLink_HK: Schema.Attribute.String;
     link_EN: Schema.Attribute.String;
     link_HK: Schema.Attribute.String;
     locale: Schema.Attribute.String & Schema.Attribute.Private;

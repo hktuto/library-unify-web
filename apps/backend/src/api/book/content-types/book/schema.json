@@ -11,6 +11,18 @@
   },
   "pluginOptions": {},
   "attributes": {
+    "category_HK": {
+      "type": "string"
+    },
+    "category_EN": {
+      "type": "string"
+    },
+    "author_HK": {
+      "type": "string"
+    },
+    "author_EN": {
+      "type": "string"
+    },
     "title_HK": {
       "type": "string"
     },
@@ -30,7 +42,13 @@
     "link_HK": {
       "type": "string"
     },
+    "eLink_EN": {
+      "type": "string"
+    },
     "link_EN": {
+      "type": "string"
+    },
+    "eLink_HK": {
       "type": "string"
     },
     "content_HK": {
