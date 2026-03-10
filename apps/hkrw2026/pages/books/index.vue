@@ -20,6 +20,10 @@ const { data, pending, refresh, error } = await useAsyncData("books", () =>
         populate: "*",
       },
     },
+    pagination: {
+      page: 1,
+      pageSize: 100,
+    },
     // filters: filter.value,
   }),
 );
