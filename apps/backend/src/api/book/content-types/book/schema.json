@@ -56,6 +56,9 @@
     },
     "content_EN": {
       "type": "richtext"
+    },
+    "publishYear": {
+      "type": "integer"
     }
   }
 }

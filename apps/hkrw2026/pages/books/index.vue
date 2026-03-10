@@ -1,6 +1,17 @@
 <script setup lang="ts">
 const { find } = useStrapi();
 const route = useRoute();
+const filter = computed(() => {
+  if (route.query.category) {
+    const cat = route.query.category as string;
+    return {
+      category_HK: {
+       $contains: cat,
+     }
+    };
+  }
+  return {};
+})
 
 const { data, pending, refresh, error } = await useAsyncData("books", () =>
   find("books", {
@@ -9,6 +20,7 @@ const { data, pending, refresh, error } = await useAsyncData("books", () =>
         populate: "*",
       },
     },
+    // filters: filter.value,
   }),
 );
 
@@ -31,7 +43,7 @@ const { tObj, currentLang, t } = useLang({
     <div v-if="pending" class="pending"></div>
     <template v-else>
       <div class="title gradientText">
-        {{ t("name") }}
+        {{ t("name") }} {{ route.query.category && data.data[0] ? '- ' + tObj('category_', data.data[0]) : '' }}
       </div>
       <div v-if="data.data" class="booksGrid">
         <div v-for="book in data.data" :key="book.id" class="bookItem">
@@ -40,6 +52,7 @@ const { tObj, currentLang, t } = useLang({
              <div class="cat">{{tObj('category_', book)}}</div>
              <div class="bookTitle">{{tObj('title_', book)}}</div>
              <div class="author">{{tObj('author_', book)}}</div>
+             <div class="author">{{tObj('publishYear', book)}}</div>
              <div class="btns">
                <ElButton type="info" @click="openBooks(tObj('link_', book))">{{t("bookLink")}}</ElButton>
                <ElButton type="info" @click="openBooks(tObj('eLink_', book))">{{t("eBookLink")}}</ElButton>
@@ -67,16 +80,16 @@ const { tObj, currentLang, t } = useLang({
 .booksGrid{
   width:100%;
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  grid-template-columns: 1fr;
   gap: 24px;
 }
 .bookItem{
   display: grid;
-  grid-template-columns: 30% 1fr;
+  grid-template-columns: min-content 1fr;
   gap: 12px;
 }
 .mainImg{
-  width:100%;
+  max-height: 200px;
   aspect-ratio: 9/13;
   object-fit: cover;
 }
@@ -85,7 +98,7 @@ const { tObj, currentLang, t } = useLang({
   color:var(--app-primary-color);
 }
 .author{
-  font-size: 0.9rem;
+  font-size: 1rem;
 }
 .bookTitle{
   font-size: 1.125rem;
