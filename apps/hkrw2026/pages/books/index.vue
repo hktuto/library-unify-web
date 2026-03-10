@@ -56,7 +56,7 @@ const { tObj, currentLang, t } = useLang({
              <div class="cat">{{tObj('category_', book)}}</div>
              <div class="bookTitle">{{tObj('title_', book)}}</div>
              <div class="author">{{tObj('author_', book)}}</div>
-             <div class="author">{{tObj('publishYear', book)}}</div>
+             <div class="author">{{book.publishYear}}</div>
              <div class="btns">
                <ElButton type="info" @click="openBooks(tObj('link_', book))">{{t("bookLink")}}</ElButton>
                <ElButton type="info" @click="openBooks(tObj('eLink_', book))">{{t("eBookLink")}}</ElButton>
