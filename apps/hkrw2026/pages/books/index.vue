@@ -24,7 +24,8 @@ const { data, pending, refresh, error } = await useAsyncData("books", () =>
       page: 1,
       pageSize: 100,
     },
-    // filters: filter.value,
+    sort: "order:asc",
+    filters: filter.value,
   }),
 );
 

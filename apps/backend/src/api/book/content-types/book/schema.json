@@ -59,6 +59,11 @@
     },
     "publishYear": {
       "type": "integer"
+    },
+    "order": {
+      "type": "integer",
+      "required": true,
+      "default": 9999
     }
   }
 }

@@ -457,6 +457,9 @@ export interface ApiBookBook extends Struct.CollectionTypeSchema {
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<'oneToMany', 'api::book.book'> &
       Schema.Attribute.Private;
+    order: Schema.Attribute.Integer &
+      Schema.Attribute.Required &
+      Schema.Attribute.DefaultTo<9999>;
     publishedAt: Schema.Attribute.DateTime;
     publishYear: Schema.Attribute.Integer;
     thumbnail: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
