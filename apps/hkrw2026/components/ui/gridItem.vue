@@ -25,8 +25,14 @@ function navigate(item: any) {
   if (url.includes("http")) {
     window.open(url, "_blank");
   } else {
+    const sp = url.split('?')
+    let query = {}
+    if (sp[1]) {
+      query = Object.fromEntries(new URLSearchParams(sp[1]));
+    }
     router.push({
       path: url,
+      query
     });
   }
 }
