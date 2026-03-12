@@ -1,0 +1,20 @@
+{
+  "kind": "singleType",
+  "collectionName": "book_pages",
+  "info": {
+    "singularName": "book-page",
+    "pluralName": "book-pages",
+    "displayName": "bookPage"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "slides": {
+      "type": "component",
+      "component": "ui.slide",
+      "repeatable": true
+    }
+  }
+}
