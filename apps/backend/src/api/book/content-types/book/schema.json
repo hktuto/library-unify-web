@@ -64,6 +64,12 @@
       "type": "integer",
       "required": true,
       "default": 9999
+    },
+    "publisher_HK": {
+      "type": "string"
+    },
+    "publisher_EN": {
+      "type": "string"
     }
   }
 }

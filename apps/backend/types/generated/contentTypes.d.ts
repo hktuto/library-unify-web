@@ -461,6 +461,8 @@ export interface ApiBookBook extends Struct.CollectionTypeSchema {
       Schema.Attribute.Required &
       Schema.Attribute.DefaultTo<9999>;
     publishedAt: Schema.Attribute.DateTime;
+    publisher_EN: Schema.Attribute.String;
+    publisher_HK: Schema.Attribute.String;
     publishYear: Schema.Attribute.Integer;
     thumbnail: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
     title_EN: Schema.Attribute.String;
