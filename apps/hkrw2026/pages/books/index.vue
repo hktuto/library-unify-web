@@ -12,7 +12,15 @@ const filter = computed(() => {
   }
   return {};
 })
-
+const { data:bookPage } = useAsyncData("bookPage", () =>
+  find("book-page", {
+    populate: {
+      slides: {
+        populate: "*",
+      },
+    },
+  }),
+);
 const { data, pending, refresh, error } = await useAsyncData("books", () =>
   find("books", {
     populate: {
@@ -39,7 +47,11 @@ const { tObj, currentLang, t } = useLang({
   bookLinkHK:"紙本書",
   bookLinkEN:"Book",
   eBookLinkHK:"電子書",
-  eBookLinkEN:"eBook",
+  eBookLinkEN: "eBook",
+  publisherHK: "出版者",
+  publisherEN: "Publisher",
+  publishYearHK: "出版年份",
+  publishYearEN: "Publish Year",
 });
 </script>
 
@@ -47,6 +59,7 @@ const { tObj, currentLang, t } = useLang({
   <div class="pageContent innerGrid">
     <div v-if="pending" class="pending"></div>
     <template v-else>
+    <UiSlider v-if="bookPage" :slides="bookPage.data.slides" />
       <div class="title gradientText">
         {{ t("name") }} {{ route.query.category && data.data[0] ? '- ' + tObj('category_', data.data[0]) : '' }}
       </div>
@@ -57,11 +70,13 @@ const { tObj, currentLang, t } = useLang({
              <div class="cat">{{tObj('category_', book)}}</div>
              <div class="bookTitle">{{tObj('title_', book)}}</div>
              <div class="author">{{tObj('author_', book)}}</div>
-             <div class="author">{{book.publishYear}}</div>
+
              <div class="btns">
                <ElButton type="info" @click="openBooks(tObj('link_', book))">{{t("bookLink")}}</ElButton>
                <ElButton type="info" @click="openBooks(tObj('eLink_', book))">{{t("eBookLink")}}</ElButton>
              </div>
+              <div class="author">{{t('publisher')}} : {{tObj('publisher_', book)}}</div>
+              <div class="author">{{t('publishYear')}} : {{book.publishYear}}</div>
            </div>
         </div>
       </div>
@@ -106,9 +121,10 @@ const { tObj, currentLang, t } = useLang({
   font-size: 1rem;
 }
 .bookTitle{
-  font-size: 1.125rem;
+  font-size: 1.5rem;
+  font-weight: bold;
 }
 .btns{
-  margin-top: 1rem;
+  margin-block: 1rem;
 }
 </style>
