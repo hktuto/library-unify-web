@@ -32,7 +32,7 @@ const { data, pending, refresh, error } = await useAsyncData("books", () =>
       page: 1,
       pageSize: 100,
     },
-    sort: "order:asc",
+    sort: "order:dsc",
     filters: filter.value,
   }),
 );
