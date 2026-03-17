@@ -28,6 +28,12 @@ function itemClick(item: any) {
         <HeaderMenuDesktop :menu="menu" @itemClick="itemClick" />
 
     </template> -->
+    <div class="action">
+
+      <HeaderFont />
+      <HeaderSearch  />
+      <HeaderLang />
+    </div>
     <HeaderMenuMobile
       :menu="menu"
       @itemClick="itemClick"
@@ -37,6 +43,16 @@ function itemClick(item: any) {
 </template>
 
 <style scoped lang="scss">
+.action{
+  padding:6px;
+  border-radius:4px;
+  background: var(--app-primary-color);
+  margin-right: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 12px;
+}
 .container {
   display: flex;
   flex-flow: row nowrap;

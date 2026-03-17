@@ -70,8 +70,8 @@ html {
   font-family: "Roboto", sans-serif;
   --app-padding: 15px;
   --footer-color: #4eb967;
-  --app-primary-color: #7544e7;
-  --menu-bg: rgba(155, 122, 233, 0.8);
+  --app-primary-color: #B65A7F;
+  --menu-bg: #B65A7F;
   --body-width: 1280px;
   --header-height: 60px;
   --app-radius: 12px;
