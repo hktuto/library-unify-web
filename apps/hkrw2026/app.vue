@@ -71,6 +71,8 @@ html {
   --app-padding: 15px;
   --footer-color: #4eb967;
   --app-primary-color: #B65A7F;
+  --sx-color-primary:#B65A7F;
+  --sx-color-primary-container: #dc93a8;
   --menu-bg: #B65A7F;
   --body-width: 1280px;
   --header-height: 60px;

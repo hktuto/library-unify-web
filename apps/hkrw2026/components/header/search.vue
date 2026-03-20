@@ -1,4 +1,10 @@
 <script setup lang="ts">
+const props = defineProps({
+  primary: {
+    type: Boolean,
+    default: false,
+  },
+})
 const emits = defineEmits(['search'])
 const router = useRouter()
 function openSearch(){
@@ -9,7 +15,7 @@ function openSearch(){
 
 <template>
   <div class="searchButton">
-    <img src="/search.svg" @click="openSearch"/>
+    <img :src="props.primary ? '/search-primary.svg' : '/search.svg'" @click="openSearch"/>
   </div>
 </template>
 

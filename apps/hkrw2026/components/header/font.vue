@@ -34,7 +34,7 @@ onMounted(() => {
   align-items: flex-end;
   gap: 2px;
 
-  color: #fff;
+  color: var(--app-primary-color);
   > * {
     cursor: pointer;
     &:hover{

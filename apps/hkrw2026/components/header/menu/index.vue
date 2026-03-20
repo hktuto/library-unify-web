@@ -31,7 +31,7 @@ function itemClick(item: any) {
     <div class="action">
 
       <HeaderFont />
-      <HeaderSearch  />
+      <HeaderSearch primary />
       <HeaderLang />
     </div>
     <HeaderMenuMobile
@@ -46,12 +46,15 @@ function itemClick(item: any) {
 .action{
   padding:6px;
   border-radius:4px;
-  background: var(--app-primary-color);
+  /* background: var(--app-primary-color); */
   margin-right: 6px;
   display: flex;
   align-items: center;
   justify-content: flex-start;
   gap: 12px;
+  :deep(.languageContainer){
+    color: var(--app-primary-color) !important;
+  }
 }
 .container {
   display: flex;
