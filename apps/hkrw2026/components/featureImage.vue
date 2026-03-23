@@ -37,29 +37,27 @@ const props = defineProps<{
     z-index: -1;
     background-size: cover;
     image-rendering: auto;
+    filter: blur(10px);
   }
 }
 .featureImage {
   width: 100%;
-  aspect-ratio: 16/8;
+  aspect-ratio: 16/9;
   position: relative;
   overflow: hidden;
   // display: grid;
   // place-items: center;
   @media (min-width: 960px) {
-    aspect-ratio: initial;
-    height: 480px;
+    /* aspect-ratio: initial; */
+    /* height: 480px; */
   }
   img {
     height: 100%;
-    // width: 100%;
+    width: 100%;
     margin: 0 auto;
     display: block;
-    object-fit: cover;
-    @media (max-width: 960px) {
-      width: 100%;
-      object-fit: contain;
-    }
+    object-fit: contain;
+
   }
 }
 </style>
