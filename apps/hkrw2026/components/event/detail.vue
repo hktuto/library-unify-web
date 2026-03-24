@@ -108,6 +108,12 @@ function calculateDisplayLocation(location: string) {
   return location;
 }
 
+function openProgram(url: string) {
+  if (url) {
+    window.open(url, "_blank");
+  }
+}
+
 onMounted(() => {
   makeProgram(props.event);
 });
@@ -204,11 +210,15 @@ onMounted(() => {
               }}
             </td>
             <td v-if="showRegister">
-              {{
-                program.register_EN === "N/A"
-                  ? t("na_")
-                  : tObj("register_", program)
-              }}
+              <template v-if="program.register_EN !== 'N/A'">
+              <div :class="{ register: true , link: program.register_url}" @click="openProgram(program.register_url)">
+                 {{ tObj("register_", program) }}
+              </div>
+
+              </template>
+              <template v-else>
+                {{ t("na_") }}
+              </template>
             </td>
             <td v-if="showPeriod">
               {{
@@ -296,6 +306,34 @@ onMounted(() => {
     height: 48px;
     width: 100%;
   }
+}
+.register{
+  &.link{
+    font-weight: 700;
+    background: linear-gradient(
+        to right,
+        #7953cd 20%,
+        #00affa 30%,
+        #0190cd 70%,
+        #764ada 80%
+    );
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-fill-color: transparent;
+    background-size: 500% auto;
+    animation: textShine 3s ease-in-out infinite alternate;
+    cursor:pointer;
+  }
+}
+
+@keyframes textShine {
+    0% {
+        background-position: 0% 50%;
+    }
+    100% {
+        background-position: 100% 50%;
+    }
 }
 .titleContainer {
   width: fit-content;

@@ -28,7 +28,7 @@ const {t, tObj} = useLang({
     <div class="programItem">
         <slot name="header"/>
         <div v-if="program.name_EN" class="eventContent">
-            
+
             <div class="content mainColor" v-html="tObj('name_', program)"></div>
         </div>
         <div v-if="program.displayTime_EN" class="eventContent">
@@ -49,7 +49,7 @@ const {t, tObj} = useLang({
         </div>
         <div v-if="program.register_EN" class="eventContent">
             <div class="label">{{ t('tableRegister') }}</div>
-            <div class="content" v-html="tObj('register_', program)"></div>
+            <div :class="{content:true, link: program.register_url}" v-html="tObj('register_', program)"></div>
         </div>
         <div v-if="program.period_EN" class="eventContent">
             <div class="label">{{ t('tablePeriod') }}</div>
