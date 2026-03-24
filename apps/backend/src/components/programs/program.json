@@ -31,6 +31,9 @@
     "register_HK": {
       "type": "text"
     },
+    "register_url": {
+      "type": "string"
+    },
     "period_EN": {
       "type": "text"
     },
@@ -74,6 +77,7 @@
     },
     "categories": {
       "type": "customField",
+      "customField": "plugin::multi-select.multi-select",
       "options": [
         "World_Book_Day_Creative_Competition",
         "Chinese_Culture_Workshop",
@@ -88,8 +92,7 @@
         "Online_Reading_Club",
         "HKRW_Fun_Day",
         "HKRW_kick-off_ceremony_and_Carnival"
-      ],
-      "customField": "plugin::multi-select.multi-select"
+      ]
     },
     "contact_HK": {
       "type": "string"
