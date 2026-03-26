@@ -73,13 +73,18 @@
     },
     "slides": {
       "type": "component",
-      "repeatable": true,
-      "component": "ui.slide"
+      "component": "ui.slide",
+      "repeatable": true
     },
     "programs": {
       "type": "component",
-      "repeatable": true,
-      "component": "programs.program"
+      "component": "programs.program",
+      "repeatable": true
+    },
+    "tab": {
+      "type": "component",
+      "component": "ui.tabs",
+      "repeatable": true
     }
   }
 }

@@ -1,0 +1,22 @@
+{
+  "collectionName": "components_ui_tabs",
+  "info": {
+    "displayName": "tabs"
+  },
+  "options": {},
+  "attributes": {
+    "title_HK": {
+      "type": "string"
+    },
+    "title_EN": {
+      "type": "string"
+    },
+    "content_HK": {
+      "type": "richtext"
+    },
+    "content_EN": {
+      "type": "richtext"
+    }
+  },
+  "config": {}
+}

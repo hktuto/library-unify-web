@@ -616,6 +616,7 @@ export interface ApiEventEvent extends Struct.CollectionTypeSchema {
     remark_EN: Schema.Attribute.Text;
     remark_HK: Schema.Attribute.Text;
     slides: Schema.Attribute.Component<'ui.slide', true>;
+    tab: Schema.Attribute.Component<'ui.tabs', true>;
     target_EN: Schema.Attribute.Text;
     target_HK: Schema.Attribute.Text;
     title_EN: Schema.Attribute.Text;

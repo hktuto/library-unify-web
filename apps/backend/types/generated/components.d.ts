@@ -121,6 +121,19 @@ export interface UiSubMenu extends Struct.ComponentSchema {
   };
 }
 
+export interface UiTabs extends Struct.ComponentSchema {
+  collectionName: 'components_ui_tabs';
+  info: {
+    displayName: 'tabs';
+  };
+  attributes: {
+    content_EN: Schema.Attribute.RichText;
+    content_HK: Schema.Attribute.RichText;
+    title_EN: Schema.Attribute.String;
+    title_HK: Schema.Attribute.String;
+  };
+}
+
 declare module '@strapi/strapi' {
   export module Public {
     export interface ComponentSchemas {
@@ -128,6 +141,7 @@ declare module '@strapi/strapi' {
       'ui.menu-item': UiMenuItem;
       'ui.slide': UiSlide;
       'ui.sub-menu': UiSubMenu;
+      'ui.tabs': UiTabs;
     }
   }
 }
