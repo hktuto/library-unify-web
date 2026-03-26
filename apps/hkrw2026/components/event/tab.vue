@@ -18,10 +18,26 @@ const {t, tObj} = useLang({});
       {{ tab.content}}
       <Markdown
         v-if="tab.content_EN"
-        class="eventContent"
+        class="tabContent"
         :source="tObj('content_', tab)"
         html
       />
     </ElTabPane>
   </ElTabs>
 </template>
+
+<style>
+.tabContent{
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 12px;
+  p {
+    width: 100%;
+    display: block;
+    position: relative;
+    img{
+      width:100%;
+    }
+  }
+}
+</style>
