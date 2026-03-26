@@ -51,6 +51,7 @@ onMounted(() => {
 <style>
 @import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap");
 :root {
+
 }
 * {
   box-sizing: border-box;
@@ -72,6 +73,7 @@ html {
   --footer-color: #4eb967;
   --app-primary-color: #B65A7F;
   --sx-color-primary:#B65A7F;
+  --el-color-primary: #B65A7F;
   --sx-color-primary-container: #dc93a8;
   --menu-bg: #B65A7F;
   --body-width: 1280px;

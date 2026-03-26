@@ -14,6 +14,9 @@ const { data, refresh, error } = await useAsyncData("programData", () =>
       slides: {
         populate: "*",
       },
+      tab: {
+        populate: "*",
+      }
     },
   }),
 );

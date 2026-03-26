@@ -138,6 +138,11 @@ onMounted(() => {
         :source="t('content_')"
         html
       />
+
+      <template v-if="event.tab">
+        <EventTab :tabs="event.tab" />
+      </template>
+
       <div v-if="event.host_EN" class="eventContent">
         <div class="label">{{ t("tableHost_") }}</div>
         <div class="content" v-html="t('host_')"></div>
