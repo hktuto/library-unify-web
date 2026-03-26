@@ -20,8 +20,8 @@ const { t, tObj, currentLang } = useLang({
   register_EN: "Registration Method",
   contact_HK: "查詢/報名電話",
   contact_EN: "Contact",
-  preiod_HK: "報名期間",
-  preiod_EN: "Register Period",
+  preiod_HK: "報名時段",
+  preiod_EN: "Registration Period",
   quota_HK: "名額",
   quota_EN: "Quota",
   na_HK: "不適用",
@@ -188,7 +188,7 @@ onMounted(() => {
           <tr>
             <th v-if="showDate">{{ t("date_") }}</th>
             <th v-if="showLocation">{{ t("location_") }}</th>
-            <th v-if="showQuota" class="small">{{ t("quota_") }}</th>
+            <th v-if="showQuota">{{ t("quota_") }}</th>
             <th v-if="showRegister">{{ t("register_") }}</th>
             <th v-if="showPeriod">{{ t("preiod_") }}</th>
             <th v-if="showContact">{{ t("contact_") }}</th>
