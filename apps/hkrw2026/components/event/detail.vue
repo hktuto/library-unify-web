@@ -352,9 +352,7 @@ onMounted(() => {
   padding-top: 48px;
   background: rgba(255, 241, 93, 0.3);
 }
-.eventContent {
-  margin-bottom: calc(var(--app-padding) / 2);
-}
+
 :deep {
   .label {
     font-size: 0.8rem;

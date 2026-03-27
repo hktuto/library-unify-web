@@ -124,4 +124,36 @@ html {
 .sx__month-agenda-events__empty {
   display: none;
 }
+
+.eventContent {
+  margin-bottom: calc(var(--app-padding) / 2);
+  table {
+    width:100%;
+    font-weight: initial;
+    border-collapse: collapse;
+    border: 1px solid var(--app-primary-color);
+    thead{
+      th {
+        padding: 6px;
+        text-align: left;
+        background: var(--app-primary-color);
+        color: #fff;
+      }
+    }
+    tbody{
+      tr{
+         border-bottom: 1px solid #eee;
+         &:last-child{
+           border-bottom: none;
+         }
+      }
+      td{
+        padding: 12px;
+        &:last-child {
+          border-left: 1px solid #eee;
+        }
+      }
+    }
+  }
+}
 </style>
