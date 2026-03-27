@@ -1,11 +1,14 @@
 <script setup lang="ts">
-
+const { t } = useLang({
+  followHK: '追蹤我們',
+  followEN: 'Follow Us',
+})
 </script>
 
 <template>
   <div class="social">
       <div class="label">
-        追蹤我們
+        {{t('follow')}}
       </div>
       <a href="https://www.instagram.com/readingisjoyful/" target="_blank">
         <img src="/social/instagram.png" />
@@ -13,7 +16,7 @@
       <a href="https://www.facebook.com/readingisjoyful" target="_blank">
         <img src="/social/fb.png" />
       </a>
-      
+
       <a href="https://www.youtube.com/user/hkplgovhkchannel" target="_blank">
         <img src="/social/yt.png" />
       </a>
