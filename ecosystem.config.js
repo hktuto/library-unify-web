@@ -13,7 +13,7 @@ module.exports = {
         ADMIN_JWT_SECRET: "tobemodified",
         TRANSFER_TOKEN_SALT: "tobemodified",
         JWT_SECRET: "tobemodified",
-        FRONT_URL: "http://47.242.219.240:3000",
+        FRONT_URL: "https://hkrw2026.readingpromotion.gov.hk",
       },
     },
     {
@@ -26,7 +26,7 @@ module.exports = {
       env: {
         NODE_ENV: "production",
         PORT: 3000,
-        STRAPI_URL: "http://47.242.219.240:1337",
+        STRAPI_URL: "https://hkrw2026-admin.readingpromotion.gov.hk",
       },
       // Log files
       log_file: "./logs/frontend_combined.log",
