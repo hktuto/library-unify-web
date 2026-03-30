@@ -29,8 +29,14 @@ const {t, tObj} = useLang({});
 <style>
 .tabContent{
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
   gap: 12px;
+  @media (max-width : 960px) {
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  }
+  @media (max-width : 640px) {
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  }
   p {
     width: 100%;
     display: block;
