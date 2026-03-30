@@ -183,6 +183,7 @@ function filterEvent() {
     }
 
     for (const program of event.programs) {
+      if (!program.startDate || !program.endDate) continue;
       if (form.value.daterange.length > 0) {
         if (!program.startDate || !program.endDate) continue;
         if (
@@ -502,6 +503,9 @@ onMounted(() => {
   }
   :deep(.sx__calendar) {
     overflow: visible;
+  }
+  :deep(.sx__date-picker-wrapper){
+    display: none;
   }
   :deep(.sx__month-agenda-event) {
     cursor: pointer;
