@@ -49,7 +49,8 @@ export interface ProgramsProgram extends Struct.ComponentSchema {
     quota_HK: Schema.Attribute.Text;
     register_EN: Schema.Attribute.Text;
     register_HK: Schema.Attribute.Text;
-    register_url: Schema.Attribute.String;
+    register_url_EN: Schema.Attribute.String;
+    register_url_HK: Schema.Attribute.String;
     special_class: Schema.Attribute.String;
     startDate: Schema.Attribute.Date;
     startTime: Schema.Attribute.Time;

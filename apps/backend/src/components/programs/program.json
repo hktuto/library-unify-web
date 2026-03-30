@@ -31,7 +31,10 @@
     "register_HK": {
       "type": "text"
     },
-    "register_url": {
+    "register_url_HK": {
+      "type": "string"
+    },
+    "register_url_EN": {
       "type": "string"
     },
     "period_EN": {

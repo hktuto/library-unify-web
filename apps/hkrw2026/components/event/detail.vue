@@ -108,9 +108,10 @@ function calculateDisplayLocation(location: string) {
   return location;
 }
 
-function openProgram(url: string) {
-  if (url) {
-    window.open(url, "_blank");
+function openProgram(event:any) {
+  if (event.register_url_HK) {
+    const i18nLink = tObj("register_url_", event);
+    window.open(i18nLink ||event.register_url_HK, "_blank");
   }
 }
 
@@ -216,7 +217,7 @@ onMounted(() => {
             </td>
             <td v-if="showRegister">
               <template v-if="program.register_EN !== 'N/A'">
-              <div :class="{ register: true , link: program.register_url}" @click="openProgram(program.register_url)">
+              <div :class="{ register: true , link: program.register_url_HK}" @click="openProgram(program)">
                  {{ tObj("register_", program) }}
               </div>
 
