@@ -42,12 +42,12 @@ function openBooks(url:string){
 }
 
 const { tObj, currentLang, t } = useLang({
-  nameHK: "圖書館資源選介",
-  nameEN: "Library Resources Guide",
+  nameHK: "閱讀焦點",
+  nameEN: "Reading focus",
   bookLinkHK:"紙本書",
   bookLinkEN:"Book",
   eBookLinkHK:"電子書",
-  eBookLinkEN: "eBook",
+  eBookLinkEN: "e-Book",
   publisherHK: "出版者",
   publisherEN: "Publisher",
   publishYearHK: "出版年份",
