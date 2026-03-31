@@ -26,6 +26,8 @@ const { t, tObj, currentLang } = useLang({
   quota_EN: "Quota",
   na_HK: "不適用",
   na_EN: "N/A",
+  registerBtn_HK: "立即報名",
+  registerBtn_EN: "Register now"
 });
 
 const showDate = ref(true);
@@ -218,7 +220,13 @@ onMounted(() => {
             <td v-if="showRegister">
               <template v-if="program.register_EN !== 'N/A'">
               <div :class="{ register: true , link: program.register_url_HK}" @click="openProgram(program)">
+                <template v-if="program.register_HK">
+                  {{ t('registerBtn_')}}
+                </template >
+                <template v-else>
+
                  {{ tObj("register_", program) }}
+                 </template>
               </div>
 
               </template>
