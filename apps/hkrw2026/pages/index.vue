@@ -50,8 +50,22 @@ const displayHomeMenu = computed(() => {
 //   page_title: config.public.siteName + " | " + "Home",
 //   page_location: window.location.href,
 // });
-
+function calculateId(st:any){
+  return st.replaceAll(' ', '_')
+}
 const config = useRuntimeConfig();
+
+onMounted(() => {
+  // if route has hash, scroll to the corresponding section
+  if (window.location.hash) {
+    const id = window.location.hash.substring(1);
+    const element = document.getElementById(id);
+    if (element) {
+      element.scrollIntoView();
+    }
+  }
+})
+
 useSeoMeta({
   title: config.public.siteName + " | " + "Home",
 });
@@ -72,6 +86,7 @@ useSeoMeta({
         <div
           v-for="(menu, index) in displayHomeMenu"
           :key="menu.id"
+          :id="calculateId(menu.label_EN)"
           class="categoryContainer"
         >
           <div class="categoryHeader" :style="`--bg-color:${menu.color}`">
@@ -182,6 +197,9 @@ useSeoMeta({
 }
 .categoryContainer {
   width: 100%;
+  &:target {
+  scroll-margin-top: 60px; /* height of fixed header */
+  }
 }
 .categoryHeader {
   width: 100%;
