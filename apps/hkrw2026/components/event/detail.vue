@@ -18,7 +18,7 @@ const { t, tObj, currentLang } = useLang({
   location_EN: "Location",
   register_HK: "報名方法",
   register_EN: "Registration Method",
-  contact_HK: "查詢/報名電話",
+  contact_HK: "查詢電話",
   contact_EN: "Contact",
   preiod_HK: "報名時段",
   preiod_EN: "Registration Period",
@@ -58,7 +58,7 @@ function makeProgram(item: any) {
   });
   if (!showQuota.value) columnCount.value -= 1;
   showRegister.value = _programs.some((item: any) => {
-    return item.register_HK;
+    return item.register_url_HK;
   });
   if (!showRegister.value) columnCount.value -= 1;
   showContact.value = _programs.some((item: any) => {
