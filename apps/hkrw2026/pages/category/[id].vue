@@ -7,7 +7,7 @@ const route = useRoute();
 // const catData = ref<any>();
 // const programs = ref<any[]>([]);
 const loading = ref(true);
-const { data, pending } = await useAsyncData("oneCategory", () =>
+const { data, pending, refresh } = await useAsyncData("oneCategory"+ route.params.id, () =>
   find("categories", {
     filters: {
       name: {
@@ -114,14 +114,13 @@ const config = useRuntimeConfig();
 useSeoMeta({
   title: config.public.siteName + " | " + data.value?.data[0].name_EN,
 });
-
-onMounted(() => {
-  // const { gtag } = useGtag()
-  // gtag('event', 'page_view', {
-  //     page_title:  config.public.siteName + " | " + data.value?.data[0].name_EN,
-  //     page_location: window.location.href
-  // });
+watch(route, () => {
+  // scroll to top
+  nextTick(() => {
+    window.scrollTo(0, 0);
+  });
 });
+
 </script>
 
 <template>

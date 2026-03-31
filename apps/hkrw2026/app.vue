@@ -69,6 +69,7 @@ html {
   width: 100%;
   height: 100%;
   font-family: "Roboto", sans-serif;
+  scroll-behavior: smooth;
   --app-padding: 15px;
   --footer-color: #4eb967;
   --app-primary-color: #B65A7F;

@@ -25,6 +25,10 @@ const router = useRouter();
 
 function itemClick(item: any) {
   if (!item.url) return;
+  if(item.url.includes("/#")){
+    // split the hash from  item.url
+    window.open(item.url, "_self");
+  }
   if (item.url.includes("http")) {
     window.open(item.url, "_blank");
   } else {

@@ -6,7 +6,7 @@ const { tObj, t } = useLang({
   moreHK: "探索更多",
   moreEN: "More",
 });
-const { data } = useAsyncData("home", () =>
+const { data, pending } = useAsyncData("home", () =>
   find("home", {
     populate: {
       Slider: {
@@ -51,20 +51,34 @@ const displayHomeMenu = computed(() => {
 //   page_location: window.location.href,
 // });
 function calculateId(st:any){
-  return st.replaceAll(' ', '_')
+  return st.trim().replaceAll(' ', '_')
 }
 const config = useRuntimeConfig();
 
+watch(pending,(bool) => {
+  if(!bool) {
+    nextTick(() => {
+      const id = window.location.hash.substring(1);
+      const element = document.getElementById(id);
+      if (element) {
+        element.scrollIntoView();
+      }
+    })
+  }
+},{
+  immediate: true,
+})
+
 onMounted(() => {
-  // if route has hash, scroll to the corresponding section
-  if (window.location.hash) {
+  nextTick(() => {
     const id = window.location.hash.substring(1);
     const element = document.getElementById(id);
     if (element) {
       element.scrollIntoView();
     }
-  }
+  })
 })
+
 
 useSeoMeta({
   title: config.public.siteName + " | " + "Home",
