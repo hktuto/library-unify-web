@@ -15,6 +15,21 @@ function itemClick(item: any) {
   if (url.includes("http")) {
     window.open(url, "_blank");
   } else {
+    let path = url;
+    if (url.includes('?')) {
+      // url has query options
+      let query = url.split('?')[1].split('&').reduce((acc, curr) => {
+        const [key, value] = curr.split('=');
+        acc[key] = value;
+        return acc;
+      }, {} as Record<string, string>);
+      path = url.split('?')[0];
+      router.push({
+        path,
+        query,
+      })
+      return
+    }
     router.push({
       path: url,
     });

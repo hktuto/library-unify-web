@@ -18,7 +18,7 @@ const { t, tObj, currentLang } = useLang({
   location_EN: "Location",
   register_HK: "報名方法",
   register_EN: "Registration Method",
-  contact_HK: "查詢電話",
+  contact_HK: "查詢/報名電話",
   contact_EN: "Contact",
   preiod_HK: "報名時段",
   preiod_EN: "Registration Period",
