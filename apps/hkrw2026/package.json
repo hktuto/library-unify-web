@@ -21,7 +21,6 @@
     "@schedule-x/events-service": "^2.27.2",
     "@schedule-x/theme-default": "^2.26.0",
     "@schedule-x/vue": "^2.24.0",
-    "@vercel/analytics": "^1.5.0",
     "@vueuse/core": "^10.9.0",
     "add-to-calendar-button": "^2.6.9",
     "dayjs": "^1.11.10",

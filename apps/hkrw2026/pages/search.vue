@@ -325,11 +325,11 @@ useSeoMeta({
   title: config.public.siteName + " | " + "Schedule",
 });
 onMounted(() => {
-  // const { gtag } = useGtag()
-  // gtag('event', 'page_view', {
-  //     page_title:  config.public.siteName + " | " + 'Schedule',
-  //     page_location: window.location.href
-  // });
+  const { gtag } = useGtag()
+  gtag('event', 'page_view', {
+      page_title:  config.public.siteName + " | " + 'Schedule',
+      page_location: window.location.href
+  });
 });
 </script>
 

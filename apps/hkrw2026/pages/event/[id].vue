@@ -23,15 +23,15 @@ const { data, refresh, error } = await useAsyncData("programData", () =>
 
 const config = useRuntimeConfig();
 useSeoMeta({
-  title: config.public.siteName + " | " + data.value?.title_EN,
+  title: config.public.siteName + " | " + data.value?.data.title_EN,
 });
 
 onMounted(() => {
-  // const { gtag } = useGtag()
-  // gtag('event', 'page_view', {
-  //     page_title:  config.public.siteName + " | " + data.value?.data.title_EN,
-  //     page_location: window.location.href
-  // });
+  const { gtag } = useGtag()
+  gtag('event', 'page_view', {
+      page_title:  config.public.siteName + " | " + data.value?.data.title_EN,
+      page_location: window.location.href
+  });
 });
 </script>
 

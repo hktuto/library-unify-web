@@ -176,11 +176,11 @@ useSeoMeta({
     "共讀半小時 Read Together for Half an Hour",
 });
 onMounted(() => {
-  // const { gtag } = useGtag()
-  // gtag('event', 'page_view', {
-  //     page_title:  config.public.siteName + " | 共讀半小時 Read Together for Half an Hour",
-  //     page_location: window.location.href
-  // });
+  const { gtag } = useGtag()
+  gtag('event', 'page_view', {
+      page_title:  config.public.siteName + " | 共讀半小時 Read Together for Half an Hour",
+      page_location: window.location.href
+  });
 });
 </script>
 

@@ -12,6 +12,17 @@ const { data, pending, refresh, error } = await useAsyncData("books-detail", () 
   }),
 );
 const { t, tObj } = useLang({});
+
+const config = useRuntimeConfig();
+const { gtag } = useGtag();
+gtag('event', 'cPageView', {
+  screen_name: 'Book Detail'
+});
+
+gtag("event", "page_view", {
+  page_title: config.public.siteName + " | " + "Book Detail",
+  page_location: window.location.href,
+});
 </script>
 
 <template>

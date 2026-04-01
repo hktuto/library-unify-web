@@ -41,6 +41,17 @@ function openBooks(url:string){
   window.open(url, "_blank");
 }
 
+const config = useRuntimeConfig();
+const { gtag } = useGtag();
+gtag('event', 'cPageView', {
+  screen_name: 'Books'
+});
+
+gtag("event", "page_view", {
+  page_title: config.public.siteName + " | " + "Books",
+  page_location: window.location.href,
+});
+
 const { tObj, currentLang, t } = useLang({
   nameHK: "閱讀焦點",
   nameEN: "Reading focus",
@@ -52,6 +63,14 @@ const { tObj, currentLang, t } = useLang({
   publisherEN: "Publisher",
   publishYearHK: "出版年份",
   publishYearEN: "Publish Year",
+});
+
+onMounted(() => {
+  const { gtag } = useGtag()
+  gtag('event', 'page_view', {
+      page_title:  config.public.siteName + " | " + 'Reading focu',
+      page_location: window.location.href
+  });
 });
 </script>
 

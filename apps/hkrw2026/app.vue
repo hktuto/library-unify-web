@@ -13,7 +13,6 @@
 </template>
 
 <script lang="ts" setup>
-import { Analytics } from "@vercel/analytics/nuxt";
 import { useEvents } from "~/composables/event";
 const dialogShow = ref(false);
 

@@ -120,7 +120,13 @@ watch(route, () => {
     window.scrollTo(0, 0);
   });
 });
-
+onMounted(() => {
+  const { gtag } = useGtag()
+  gtag('event', 'page_view', {
+      page_title:  config.public.siteName + " | " + data.value?.data[0].name_EN,
+      page_location: window.location.href
+  });
+});
 </script>
 
 <template>

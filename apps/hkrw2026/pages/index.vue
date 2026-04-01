@@ -41,19 +41,20 @@ const displayHomeMenu = computed(() => {
   });
 });
 
-// const { gtag } = useGtag()
-// gtag('event', 'cPageView', {
-//   screen_name: 'Home'
-// })
-//
-// gtag("event", "page_view", {
-//   page_title: config.public.siteName + " | " + "Home",
-//   page_location: window.location.href,
-// });
+const config = useRuntimeConfig();
+const { gtag } = useGtag()
+gtag('event', 'cPageView', {
+  screen_name: 'Home'
+})
+
+gtag("event", "page_view", {
+  page_title: config.public.siteName + " | " + "Home",
+  page_location: window.location.href,
+});
 function calculateId(st:any){
   return st.trim().replaceAll(' ', '_')
 }
-const config = useRuntimeConfig();
+
 
 watch(pending,(bool) => {
   if(!bool) {
