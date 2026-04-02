@@ -24,8 +24,8 @@ export const useLang = (obj:any) => {
         return 'HK'
     })
     const currentLang = useState('language',() => routeDefaultLang.value);
-    
-    
+
+
 
     function changeLocale(key:string) {
         const res = locales.find(item => item.key === key);
@@ -34,9 +34,9 @@ export const useLang = (obj:any) => {
         }
         const locale = localStorage.getItem('locale') || 'HK' as any;
         currentLang.value = locale
-        
+
     }
-    
+
     function t(key:string) {
         if(currentLang.value !== 'CN') {
             return obj[key + currentLang.value];
@@ -50,7 +50,7 @@ export const useLang = (obj:any) => {
         }
         return TraditionalToSim(key)
     }
-    
+
     function tObj(key:string, localObj:any) {
         if(!key || !localObj[key + 'HK']) return "";
         if(currentLang.value !== 'CN') {
@@ -59,7 +59,7 @@ export const useLang = (obj:any) => {
             return localObj[key + currentLang.value] || TraditionalToSim(localObj[key + "HK"])
         }
     }
-    
+
     function TraditionalToSim(cc : string) {
         var str = '';
         var ss = JTPYStr();
@@ -89,7 +89,7 @@ export const useLang = (obj:any) => {
         }
         return str;
     }
-    
+
 
     onMounted(() => {
         if(route.query.lang) {
@@ -102,12 +102,14 @@ export const useLang = (obj:any) => {
             if(route.query.lang === "EN") {
                 changeLocale('EN')
             }
+          const router = useRouter();
+          router.replace({ query: {} })
         } else {
             changeLocale(localStorage.getItem('locale') || 'HK')
         }
     })
 
-    
+
     return {
         displayLang,
         locales ,
