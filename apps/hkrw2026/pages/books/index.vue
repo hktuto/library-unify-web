@@ -80,7 +80,7 @@ onMounted(() => {
     <template v-else>
     <UiSlider v-if="bookPage" :slides="bookPage.data.slides" />
       <div class="title gradientText">
-        {{ t("name") }} {{ route.query.category && data.data[0] ? '- ' + tObj('category_', data.data[0]) : '' }}
+        {{ route.query.category && data.data[0] ?  tObj('category_', data.data[0]) : t('name') }}
       </div>
       <div v-if="data.data" class="booksGrid">
         <div v-for="book in data.data" :key="book.id" class="bookItem">
