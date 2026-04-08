@@ -5,7 +5,7 @@ import dayjs from "dayjs";
 const { halfHour, getAllHalfHour } = useHalfHour();
 const { allDistrict, bigDistrict } = useDistrict();
 const { find } = useStrapi();
-const route = useRoute();
+
 const { data, pending } = useAsyncData("categories", () =>
   find("categories", {
     populate: "*",
@@ -14,7 +14,6 @@ const { data, pending } = useAsyncData("categories", () =>
         $eq: "Read_Together_for_Half_an_Hour",
       },
     },
-    status: route.query.status || "published",
   }),
 );
 
@@ -121,21 +120,22 @@ function filterEvent() {
       }
 
       if (form.value.district) {
-        if (!event.district || !event.district.data) {
+        if (!event.district || !event.district) {
           continue;
         }
         if (
-          event.district.data.main_district !== form.value.district &&
+          event.district.main_district !== form.value.district &&
           form.value.district !== "All"
-        )
+        ) {
           continue;
+        }
       }
       if (form.value.detailDistrict) {
-        if (!event.district || !event.district.data) {
+        if (!event.district || !event.district) {
           continue;
         }
         if (
-          event.district.data.id !== form.value.detailDistrict &&
+          event.district.id !== form.value.detailDistrict &&
           form.value.detailDistrict !== "All"
         )
           continue;
@@ -177,11 +177,11 @@ useSeoMeta({
     "共讀半小時 Read Together for Half an Hour",
 });
 onMounted(() => {
-  // const { gtag } = useGtag()
-  // gtag('event', 'page_view', {
-  //     page_title:  config.public.siteName + " | 共讀半小時 Read Together for Half an Hour",
-  //     page_location: window.location.href
-  // });
+  const { gtag } = useGtag()
+  gtag('event', 'page_view', {
+      page_title:  config.public.siteName + " | 共讀半小時 Read Together for Half an Hour",
+      page_location: window.location.href
+  });
 });
 </script>
 
@@ -271,10 +271,8 @@ onMounted(() => {
           <template #default="scope">
             <div
               v-html="
-                scope.row.district &&
-                scope.row.district.data &&
-                scope.row.district.data
-                  ? tObj('label_', scope.row.district.data)
+                scope.row.district && scope.row.district
+                  ? tObj('label_', scope.row.district)
                   : ''
               "
             ></div>
