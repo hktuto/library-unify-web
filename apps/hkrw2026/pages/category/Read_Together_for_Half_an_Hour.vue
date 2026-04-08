@@ -120,21 +120,22 @@ function filterEvent() {
       }
 
       if (form.value.district) {
-        if (!event.district || !event.district.data) {
+        if (!event.district || !event.district) {
           continue;
         }
         if (
-          event.district.data.main_district !== form.value.district &&
+          event.district.main_district !== form.value.district &&
           form.value.district !== "All"
-        )
+        ) {
           continue;
+        }
       }
       if (form.value.detailDistrict) {
-        if (!event.district || !event.district.data) {
+        if (!event.district || !event.district) {
           continue;
         }
         if (
-          event.district.data.id !== form.value.detailDistrict &&
+          event.district.id !== form.value.detailDistrict &&
           form.value.detailDistrict !== "All"
         )
           continue;
@@ -270,8 +271,8 @@ onMounted(() => {
           <template #default="scope">
             <div
               v-html="
-                scope.row.district.data && scope.row.district.data
-                  ? tObj('label_', scope.row.district.data)
+                scope.row.district && scope.row.district
+                  ? tObj('label_', scope.row.district)
                   : ''
               "
             ></div>

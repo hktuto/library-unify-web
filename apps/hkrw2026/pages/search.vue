@@ -195,8 +195,7 @@ function filterEvent() {
       if (form.value.district) {
         if (
           !program.district ||
-          !program.district.data ||
-          (program.district.data.main_district !== form.value.district &&
+          (program.district.main_district !== form.value.district &&
             form.value.district !== "All")
         )
           continue;
@@ -204,8 +203,7 @@ function filterEvent() {
       if (form.value.detailDistrict) {
         if (
           !program.district ||
-          !program.district.data ||
-          (program.district.data.id !== form.value.detailDistrict &&
+          (program.district.id !== form.value.detailDistrict &&
             form.value.detailDistrict !== "All")
         )
           continue;
