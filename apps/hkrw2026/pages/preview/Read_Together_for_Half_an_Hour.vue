@@ -259,17 +259,17 @@ onMounted(() => {
             <span v-html="tObj('displayTime_', scope.row)"> </span>
           </template>
         </ElTableColumn>
-        <ElTableColumn :label="t('tableRemark')" width="150">
+        <ElTableColumn :label="t('tableRemark')" min-width="150">
           <template #default="scope">
             <div v-if="scope.row.private" v-html="t('remark')"></div>
           </template>
         </ElTableColumn>
-        <ElTableColumn :label="t('tableLocation')" width="250">
+        <ElTableColumn :label="t('tableLocation')" min-width="250">
           <template #default="scope">
             <div v-html="tObj('location_', scope.row)"></div>
           </template>
         </ElTableColumn>
-        <ElTableColumn :label="t('tableHost')" width="150">
+        <ElTableColumn :label="t('tableHost')" min-width="150">
           <template #default="scope">
             {{ tObj("host_", scope.row) }}
           </template>
