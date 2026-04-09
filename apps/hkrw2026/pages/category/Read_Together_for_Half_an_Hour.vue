@@ -30,7 +30,8 @@ const { t, tObj, currentLang } = useLang({
   tableNameHK: "活動名稱",
   tableNameEN: "Event Name",
   tableDateHK: "活動日期及時間",
-
+  tableRemarkHK:"備注",
+  tableRemarkEN:"Remarks",
   tableRegisterHK: "報名及查詢",
   tablePeriodHK: "報名日期",
   tableHostEN: "Host",
@@ -67,6 +68,8 @@ const { t, tObj, currentLang } = useLang({
   "Leisure and Cultural VenueHK": "康文場地",
   contentHK: "內容",
   contentEN: "Content",
+  remarkHK: "不開放予公眾人士參",
+  remarkEN:"Not open to public"
 });
 
 const form = ref({
@@ -187,6 +190,14 @@ onMounted(() => {
 
 <template>
   <div class="pageContent innerGrid">
+    <div
+      class="featureContainer"
+    >
+      <img
+        src="https://hkrw2026-admin.readingpromotion.gov.hk/uploads/260408_half_banner_3471eef27e.png"
+        alt="feature"
+      />
+    </div>
     <template v-if="data && data.data[0]">
       <div class="title gradientText">
         {{ tObj("name_", data.data[0]) }}
@@ -251,18 +262,22 @@ onMounted(() => {
     </div>
     <div class="content">
       <ElTable :data="displayEvent" stripe>
-        <ElTableColumn :label="t('tableDate')" width="120">
+        <ElTableColumn :label="t('tableDate')" width="150">
           <template #default="scope">
             <span v-html="tObj('displayTime_', scope.row)"> </span>
           </template>
         </ElTableColumn>
-
-        <ElTableColumn :label="t('tableLocation')">
+        <ElTableColumn :label="t('tableRemark')" min-width="150">
+          <template #default="scope">
+            <div v-if="scope.row.private" v-html="t('remark')"></div>
+          </template>
+        </ElTableColumn>
+        <ElTableColumn :label="t('tableLocation')" min-width="250">
           <template #default="scope">
             <div v-html="tObj('location_', scope.row)"></div>
           </template>
         </ElTableColumn>
-        <ElTableColumn :label="t('tableHost')">
+        <ElTableColumn :label="t('tableHost')" min-width="150">
           <template #default="scope">
             {{ tObj("host_", scope.row) }}
           </template>
@@ -319,6 +334,15 @@ onMounted(() => {
 </template>
 
 <style scoped lang="scss">
+.featureContainer {
+  width: 100%;
+  aspect-ratio: 16/9;
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}
 .content {
   background: #fff;
   padding: 12px;

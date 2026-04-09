@@ -190,6 +190,14 @@ onMounted(() => {
 
 <template>
   <div class="pageContent innerGrid">
+    <div
+      class="featureContainer"
+    >
+      <img
+        src="https://hkrw2026-admin.readingpromotion.gov.hk/uploads/260408_half_banner_3471eef27e.png"
+        alt="feature"
+      />
+    </div>
     <template v-if="data && data.data[0]">
       <div class="title gradientText">
         {{ tObj("name_", data.data[0]) }}
@@ -326,6 +334,15 @@ onMounted(() => {
 </template>
 
 <style scoped lang="scss">
+.featureContainer {
+  width: 100%;
+  aspect-ratio: 16/9;
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}
 .content {
   background: #fff;
   padding: 12px;
