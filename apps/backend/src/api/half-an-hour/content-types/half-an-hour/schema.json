@@ -82,6 +82,9 @@
       "allowedTypes": [
         "images"
       ]
+    },
+    "private": {
+      "type": "boolean"
     }
   }
 }

@@ -30,7 +30,8 @@ const { t, tObj, currentLang } = useLang({
   tableNameHK: "活動名稱",
   tableNameEN: "Event Name",
   tableDateHK: "活動日期及時間",
-
+  tableRemarkHK:"備注",
+  tableRemarkEN:"Remarks",
   tableRegisterHK: "報名及查詢",
   tablePeriodHK: "報名日期",
   tableHostEN: "Host",
@@ -67,6 +68,8 @@ const { t, tObj, currentLang } = useLang({
   "Leisure and Cultural VenueHK": "康文場地",
   contentHK: "內容",
   contentEN: "Content",
+  remarkHK: "中文版‘不開放予公眾人士參",
+  remarkEN:"Not open to public"
 });
 
 const form = ref({
@@ -256,8 +259,12 @@ onMounted(() => {
             <span v-html="tObj('displayTime_', scope.row)"> </span>
           </template>
         </ElTableColumn>
-
         <ElTableColumn :label="t('tableLocation')">
+          <template #default="scope">
+            <div v-if="scope.row.private" v-html="tObj('location_', scope.row)"></div>
+          </template>
+        </ElTableColumn>
+        <ElTableColumn :label="t('tableRemark')">
           <template #default="scope">
             <div v-html="tObj('location_', scope.row)"></div>
           </template>

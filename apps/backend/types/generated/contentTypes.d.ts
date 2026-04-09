@@ -695,6 +695,7 @@ export interface ApiHalfAnHourHalfAnHour extends Struct.CollectionTypeSchema {
       Schema.Attribute.Private;
     location_EN: Schema.Attribute.String;
     location_HK: Schema.Attribute.Text;
+    private: Schema.Attribute.Boolean;
     publishedAt: Schema.Attribute.DateTime;
     startDate: Schema.Attribute.Date;
     startTime: Schema.Attribute.Time;
