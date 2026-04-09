@@ -68,7 +68,7 @@ const { t, tObj, currentLang } = useLang({
   "Leisure and Cultural VenueHK": "康文場地",
   contentHK: "內容",
   contentEN: "Content",
-  remarkHK: "中文版‘不開放予公眾人士參",
+  remarkHK: "不開放予公眾人士參",
   remarkEN:"Not open to public"
 });
 
@@ -259,12 +259,12 @@ onMounted(() => {
             <span v-html="tObj('displayTime_', scope.row)"> </span>
           </template>
         </ElTableColumn>
-        <ElTableColumn :label="t('tableLocation')">
+        <ElTableColumn :label="t('tableRemark')">
           <template #default="scope">
-            <div v-if="scope.row.private" v-html="tObj('location_', scope.row)"></div>
+            <div v-if="scope.row.private" v-html="t('remark')"></div>
           </template>
         </ElTableColumn>
-        <ElTableColumn :label="t('tableRemark')">
+        <ElTableColumn :label="t('tatableLocationbleRemark')">
           <template #default="scope">
             <div v-html="tObj('location_', scope.row)"></div>
           </template>
