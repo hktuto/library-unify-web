@@ -220,7 +220,7 @@ onMounted(() => {
             <td v-if="showRegister">
               <template v-if="program.register_EN !== 'N/A'">
               <div :class="{ register: true , link: program.register_url_HK}" @click="openProgram(program)">
-                <template v-if="program.register_HK">
+                <template v-if="program.register_url_HK">
                   {{ t('registerBtn_')}}
                 </template >
               </div>
