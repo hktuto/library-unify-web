@@ -223,10 +223,6 @@ onMounted(() => {
                 <template v-if="program.register_HK">
                   {{ t('registerBtn_')}}
                 </template >
-                <template v-else>
-
-                 {{ tObj("register_", program) }}
-                 </template>
               </div>
 
               </template>
