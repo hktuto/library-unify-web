@@ -68,7 +68,7 @@ const { t, tObj, currentLang } = useLang({
   "Leisure and Cultural VenueHK": "康文場地",
   contentHK: "內容",
   contentEN: "Content",
-  remarkHK: "不開放予公眾人士參",
+  remarkHK: "不開放予公眾人士參加",
   remarkEN:"Not open to public"
 });
 
