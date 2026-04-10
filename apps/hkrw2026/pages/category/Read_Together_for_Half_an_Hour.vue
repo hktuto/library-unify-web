@@ -267,7 +267,7 @@ onMounted(() => {
             <span v-html="tObj('displayTime_', scope.row)"> </span>
           </template>
         </ElTableColumn>
-        <ElTableColumn :label="t('tableRemark')" min-width="160">
+        <ElTableColumn :label="t('tableRemark')" min-width="170">
           <template #default="scope">
             <div v-if="scope.row.private" v-html="t('remark')"></div>
           </template>
