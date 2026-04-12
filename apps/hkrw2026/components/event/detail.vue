@@ -58,7 +58,7 @@ function makeProgram(item: any) {
   });
   if (!showQuota.value) columnCount.value -= 1;
   showRegister.value = _programs.some((item: any) => {
-    return item.register_url_HK;
+    return item.register_HK;
   });
   if (!showRegister.value) columnCount.value -= 1;
   showContact.value = _programs.some((item: any) => {
@@ -223,6 +223,9 @@ onMounted(() => {
                 <template v-if="program.register_url_HK">
                   {{ t('registerBtn_')}}
                 </template >
+                <template v-else>
+                  {{ tObj('register_', program)}}
+                </template>
               </div>
 
               </template>
