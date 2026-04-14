@@ -1,0 +1,70 @@
+{
+  "kind": "collectionType",
+  "collectionName": "book2s",
+  "info": {
+    "singularName": "book2",
+    "pluralName": "book2s",
+    "displayName": "book2"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "category_HK": {
+      "type": "string"
+    },
+    "category_EN": {
+      "type": "string"
+    },
+    "author_HK": {
+      "type": "string"
+    },
+    "author_EN": {
+      "type": "string"
+    },
+    "title_HK": {
+      "type": "string"
+    },
+    "title_EN": {
+      "type": "string"
+    },
+    "publisher_HK": {
+      "type": "string"
+    },
+    "publisher_EN": {
+      "type": "string"
+    },
+    "location_HK": {
+      "type": "string"
+    },
+    "location_EN": {
+      "type": "string"
+    },
+    "year_HK": {
+      "type": "string"
+    },
+    "year_EN": {
+      "type": "string"
+    },
+    "isbn": {
+      "type": "string"
+    },
+    "book_link_HK": {
+      "type": "string"
+    },
+    "book_link_EN": {
+      "type": "string"
+    },
+    "eBook_link_HK": {
+      "type": "string"
+    },
+    "eBook_link_EN": {
+      "type": "string"
+    },
+    "order": {
+      "type": "integer",
+      "default": 0
+    }
+  }
+}

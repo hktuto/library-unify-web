@@ -501,6 +501,48 @@ export interface ApiBookBook extends Struct.CollectionTypeSchema {
   };
 }
 
+export interface ApiBook2Book2 extends Struct.CollectionTypeSchema {
+  collectionName: 'book2s';
+  info: {
+    displayName: 'book2';
+    pluralName: 'book2s';
+    singularName: 'book2';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    author_EN: Schema.Attribute.String;
+    author_HK: Schema.Attribute.String;
+    book_link_EN: Schema.Attribute.String;
+    book_link_HK: Schema.Attribute.String;
+    category_EN: Schema.Attribute.String;
+    category_HK: Schema.Attribute.String;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    eBook_link_EN: Schema.Attribute.String;
+    eBook_link_HK: Schema.Attribute.String;
+    isbn: Schema.Attribute.String;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<'oneToMany', 'api::book2.book2'> &
+      Schema.Attribute.Private;
+    location_EN: Schema.Attribute.String;
+    location_HK: Schema.Attribute.String;
+    order: Schema.Attribute.Integer & Schema.Attribute.DefaultTo<0>;
+    publishedAt: Schema.Attribute.DateTime;
+    publisher_EN: Schema.Attribute.String;
+    publisher_HK: Schema.Attribute.String;
+    title_EN: Schema.Attribute.String;
+    title_HK: Schema.Attribute.String;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    year_EN: Schema.Attribute.String;
+    year_HK: Schema.Attribute.String;
+  };
+}
+
 export interface ApiCategoryCategory extends Struct.CollectionTypeSchema {
   collectionName: 'categories';
   info: {
@@ -1335,6 +1377,7 @@ declare module '@strapi/strapi' {
       'admin::user': AdminUser;
       'api::book-page.book-page': ApiBookPageBookPage;
       'api::book.book': ApiBookBook;
+      'api::book2.book2': ApiBook2Book2;
       'api::category.category': ApiCategoryCategory;
       'api::district.district': ApiDistrictDistrict;
       'api::event.event': ApiEventEvent;
