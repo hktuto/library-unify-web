@@ -518,6 +518,7 @@ export interface ApiBook2Book2 extends Struct.CollectionTypeSchema {
     book_link_HK: Schema.Attribute.String;
     category_EN: Schema.Attribute.String;
     category_HK: Schema.Attribute.String;
+    cover: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
