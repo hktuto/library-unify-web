@@ -123,14 +123,16 @@ onMounted(() => {
       <div class="title gradientText">
         {{ route.query.category && data.data[0] ?  tObj('category_', data.data[0]) : t('name') }}
       </div>
+
       <div class="tags">
         <div :class="{tag:true, selected: !route.query.category}" @click="selectCategory()">{{ t('all') }}</div>
         <div v-for="(value, key) in catOptions" :key="key" :class="{tag:true, selected: route.query.category === key}" @click="selectCategory(key)">{{ t(key) }}</div>
       </div>
+      <div><small>「For English, please scroll down」</small></div>
       <div v-if="data.data" class="booksGrid">
         <div v-for="book in data.data" :key="book.id" class="bookItem">
            <NuxtImg v-if="book.cover" class="mainImg" :src="imgUrlConverter(book.cover.url)" />
-           <NuxtImg v-else class="mainImg" :src="imgUrlConverter('/uploads/260327_HKRW_2026_KV_1920x1080_79d560ee5a.png')" />
+           <NuxtImg v-else class="mainImg" :src="imgUrlConverter('/uploads/260415_book_thumbnail_kv_3b5047c269.png')" />
 
            <div class="content">
              <div class="cat">{{t(book.category_HK)}}</div>
