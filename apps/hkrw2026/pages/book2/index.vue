@@ -11,11 +11,12 @@ const catOptions = {
   '興趣': 'interests',
   '關係': 'relationships'
 }
+const currentSelectedCatgory = ref();
 const filter = computed(() => {
-  if (route.query.category && catOptions[route.query.category as string]) {
+  if (route.query.category && catOptions[route.query.category as string] || currentSelectedCatgory.value) {
     return {
       category_HK: {
-       $contains: route.query.category,
+       $contains: currentSelectedCatgory.value || route.query.category,
      }
     };
   }
@@ -92,13 +93,17 @@ const { tObj, currentLang, t } = useLang({
   'allEN': 'All'
 });
 const router = useRouter()
-function selectCategory(category) {
+function selectCategory(category?:string) {
   if(!category) {
     router.push({ query: {} })
   } else {
+    currentSelectedCatgory.value = category;
     router.push({ query: { category } })
   }
-  refresh()
+  nextTick(() => {
+    refresh()
+  })
+  // window.location.reload()
 }
 
 onMounted(() => {
