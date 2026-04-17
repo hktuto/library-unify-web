@@ -128,7 +128,7 @@ onMounted(() => {
         <div :class="{tag:true, selected: !route.query.category}" @click="selectCategory()">{{ t('all') }}</div>
         <div v-for="(value, key) in catOptions" :key="key" :class="{tag:true, selected: route.query.category === key}" @click="selectCategory(key)">{{ t(key) }}</div>
       </div>
-      <div><small>「For English, please scroll down」</small></div>
+      <div><small>"For English, please scroll down"</small></div>
       <div v-if="data.data" class="booksGrid">
         <div v-for="book in data.data" :key="book.id" class="bookItem">
            <NuxtImg v-if="book.cover" class="mainImg" :src="imgUrlConverter(book.cover.url)" />
