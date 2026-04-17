@@ -20,7 +20,7 @@ const { data, pending } = useAsyncData("categories", () =>
 const allCategory = ["Library", "DC", "LCSD Venue", "Com Lib", "Other"];
 
 const { t, tObj, currentLang } = useLang({
-  tableDateEN: "Programme Date/Time",
+  tableDateEN: "Programme Time",
   tableLocationEN: "Venue",
   tableLocationHK: "地點",
   tableAddressEN: "Address",
@@ -29,7 +29,7 @@ const { t, tObj, currentLang } = useLang({
   tablePeriodEN: "Registration Period",
   tableNameHK: "活動名稱",
   tableNameEN: "Event Name",
-  tableDateHK: "活動日期及時間",
+  tableDateHK: "活動時間",
   tableRemarkHK:"備注",
   tableRemarkEN:"Remarks",
   tableRegisterHK: "報名及查詢",
