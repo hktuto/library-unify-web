@@ -40,14 +40,14 @@ onMounted(() => {
         }}
       </div>
       <div
-        v-if="data && data[0] && data[0].event.feature.data"
+        v-if="data && data.data[0] && data.data[0].feature"
         class="featureContainer"
       >
-        <template v-if="data[0].event.feature.data.url.includes('mp4')">
+        <template v-if="data.data[0].feature.url.includes('mp4')">
           <div class="videoContainer innerGrid">
             <video
               class="video"
-              :src="imgUrlConverter(data[0].event.feature.data.url)"
+              :src="imgUrlConverter(data.data[0].feature.url)"
               autoplay
               preload
               muted
@@ -58,7 +58,7 @@ onMounted(() => {
         </template>
         <img
           v-else
-          :src="imgUrlConverter(data?.data[0].event.feature.data.url)"
+          :src="imgUrlConverter(data?.data[0].feature.url)"
           alt="feature"
         />
       </div>
