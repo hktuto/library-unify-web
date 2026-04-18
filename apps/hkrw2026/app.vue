@@ -52,6 +52,12 @@ onMounted(() => {
 :root {
 
 }
+
+.desktopOnly{
+  @media( max-width: 768px) {
+    display: none !important;
+  }
+}
 * {
   box-sizing: border-box;
 }

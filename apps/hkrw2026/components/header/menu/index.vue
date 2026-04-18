@@ -45,9 +45,9 @@ function itemClick(item: any) {
     </template> -->
     <div class="action">
 
-      <HeaderFont />
-      <HeaderSearch primary />
-      <HeaderLang />
+      <HeaderFont class="desktopOnly" />
+      <HeaderSearch  class="desktopOnly" primary />
+      <HeaderLang class="desktopOnly" />
     </div>
     <HeaderMenuMobile
       :menu="menu"
