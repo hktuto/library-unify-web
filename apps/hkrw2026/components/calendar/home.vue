@@ -283,6 +283,12 @@ watch(
 .sx__event {
   cursor: pointer;
 }
+.sx__forward-backward-navigation {
+  display: none;
+}
+.sx__date-picker__month-view-header .sx__chevron-wrapper{
+  display: none;
+}
 </style>
 
 <style scoped lang="scss">

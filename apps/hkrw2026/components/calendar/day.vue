@@ -107,6 +107,12 @@ watch(
   </div>
 </template>
 
+<style>
+.sx__forward-backward-navigation {
+  display: none;
+}
+</style>
+
 <style scoped lang="scss">
 .dayContainer {
   background: rgba(255, 255, 255, 0.7);

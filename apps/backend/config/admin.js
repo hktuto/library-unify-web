@@ -20,9 +20,8 @@ module.exports = ({ env }) => ({
       return true;
     },
     config: {
-      allowedOrigins: ["http://localhost:3000", "http://47.242.219.240:3000"],
+      allowedOrigins: ["http://localhost:3000", "http://47.242.219.240:3000", "https://hkrw.readingpromotion.gov.hk"],
       async handler(uid, { documentId, locale, status }) {
-        console.log(uid, documentId, locale, status);
         // filter all non preview able content
         const ignoreUid = ["api::district.district"];
         if (ignoreUid.includes(uid)) {
