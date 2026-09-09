@@ -45,6 +45,21 @@ function closePopup() {
 onMounted(() => {
   getPopup();
 });
+
+watch(() => route.path, (to,form) => {
+  // might get an infinite redirect loop
+  if (to === '/') {
+    document.body.style.filter = 'grayscale(1)'
+  } else {
+    setTimeout(() => {
+
+    document.body.style.filter = 'none'
+    }, 100)
+  }
+}, {
+  immediate: true,
+  deep:true
+});
 </script>
 
 <style>
