@@ -52,7 +52,9 @@ onMounted(() => {
 :root {
 
 }
-
+html{
+  filter: grayscale(1);
+}
 .desktopOnly{
   @media( max-width: 768px) {
     display: none !important;
