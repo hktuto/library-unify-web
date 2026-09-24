@@ -208,7 +208,7 @@ onMounted(() => {
       </div>
     </template>
     <div class="content">
-      <video src="https://hkrw2026-admin.readingpromotion.gov.hk/uploads/20260423_LCSD_Highlight_V25_convert_3b94292e80.mp4" width="100%" autoplay controls />
+      <!-- <video src="https://hkrw2026-admin.readingpromotion.gov.hk/uploads/20260423_LCSD_Highlight_V25_convert_3b94292e80.mp4" width="100%" autoplay controls /> -->
       <ElRow :gutter="12">
         <ElCol :span="12">
           <ElFormItem :label="t('keyword')">
